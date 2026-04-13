@@ -36,7 +36,7 @@ export default function BurnCapJourney() {
   }
 
   return (
-    <section className="py-28 bg-base-200 relative overflow-hidden">
+    <section className="py-28 bg-base-100 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -45,7 +45,7 @@ export default function BurnCapJourney() {
           style={{ y: headerY }}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-3 py-1 uppercase tracking-[0.15em] mb-4">Capítulo 7</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 7</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
             ¿Qué pasa al llegar al <span className="gradient-text">50%</span>?
           </h2>
@@ -146,23 +146,27 @@ export default function BurnCapJourney() {
 
           {/* Phase explanations */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className={`p-4 rounded-xl border transition-all ${!capReached ? 'border-primary bg-primary/5' : 'border-base-300 bg-base-200'}`}>
-              <div className="text-sm font-bold mb-2">🔥 Fase de Quema (0-50%)</div>
-              <ul className="text-xs text-base-content/70 space-y-1.5">
-                <li>• Cada transferencia quema tokens</li>
-                <li>• Compras en e-commerce queman del pool</li>
-                <li>• Burns directos permitidos</li>
-                <li>• El supply se reduce activamente</li>
-              </ul>
+            <div className={`card border transition-all ${!capReached ? 'border-primary bg-primary/5' : 'border-base-300 bg-base-200'}`}>
+              <div className="card-body p-4">
+                <h4 className="card-title text-sm">🔥 Fase de Quema (0-50%)</h4>
+                <ul className="text-xs text-base-content/70 space-y-1.5">
+                  <li>• Cada transferencia quema tokens</li>
+                  <li>• Compras en e-commerce queman del pool</li>
+                  <li>• Burns directos permitidos</li>
+                  <li>• El supply se reduce activamente</li>
+                </ul>
+              </div>
             </div>
-            <div className={`p-4 rounded-xl border transition-all ${capReached ? 'border-accent bg-accent/5' : 'border-base-300 bg-base-200'}`}>
-              <div className="text-sm font-bold mb-2">🔄 Fase de Recompra (post 50%)</div>
-              <ul className="text-xs text-base-content/70 space-y-1.5">
-                <li>• No se queman más tokens</li>
-                <li>• Comisiones DEX siguen activas</li>
-                <li>• Fondos se usan para recomprar NX036</li>
-                <li>• Buyback wallet visible públicamente</li>
-              </ul>
+            <div className={`card border transition-all ${capReached ? 'border-accent bg-accent/5' : 'border-base-300 bg-base-200'}`}>
+              <div className="card-body p-4">
+                <h4 className="card-title text-sm">🔄 Fase de Recompra (post 50%)</h4>
+                <ul className="text-xs text-base-content/70 space-y-1.5">
+                  <li>• No se queman más tokens</li>
+                  <li>• Comisiones DEX siguen activas</li>
+                  <li>• Fondos se usan para recomprar NX036</li>
+                  <li>• Buyback wallet visible públicamente</li>
+                </ul>
+              </div>
             </div>
           </div>
         </motion.div>

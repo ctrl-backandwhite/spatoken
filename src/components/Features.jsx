@@ -51,10 +51,12 @@ export default function Features() {
         <div className="grid grid-cols-3 gap-6">
           {features.map(({ title, desc, icon, gradient }) => (
             <div key={title}
-              className={`fade-in p-8 rounded-2xl bg-gradient-to-br ${gradient} border border-base-300 hover:-translate-y-1 hover:border-primary transition-all cursor-default`}>
-              <div className="text-3xl mb-4">{icon}</div>
-              <h3 className="text-lg mb-2.5">{title}</h3>
-              <p className="text-sm text-base-content/70 leading-relaxed">{desc}</p>
+              className={`card fade-in bg-gradient-to-br ${gradient} border border-base-300 hover:-translate-y-1 hover:border-primary transition-all cursor-default`}>
+              <div className="card-body p-8">
+                <div className="text-3xl">{icon}</div>
+                <h3 className="card-title text-lg">{title}</h3>
+                <p className="text-sm text-base-content/70 leading-relaxed">{desc}</p>
+              </div>
             </div>
           ))}
         </div>

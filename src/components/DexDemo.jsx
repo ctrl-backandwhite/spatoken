@@ -47,7 +47,7 @@ export default function DexDemo() {
         ]
 
   return (
-    <section className="py-28 bg-base-200 relative overflow-hidden">
+    <section className="py-28 bg-base-100 relative overflow-hidden">
       {/* Parallax decorative orb */}
       <motion.div
         style={{ y: decorY }}
@@ -64,7 +64,7 @@ export default function DexDemo() {
           style={{ y: headerY }}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-3 py-1 uppercase tracking-[0.15em] mb-4">Capítulo 3</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 3</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
             Compra y venta <span className="gradient-text">inteligente</span>
           </h2>

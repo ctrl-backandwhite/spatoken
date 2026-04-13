@@ -22,15 +22,17 @@ export default function Navbar() {
           : 'py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-            <span className="text-white text-xs font-bold">NX</span>
-          </div>
-          <span className="text-lg font-bold tracking-tight text-base-content">NX036</span>
-        </a>
+      <div className="navbar max-w-7xl mx-auto px-8">
+        <div className="navbar-start">
+          <a href="#hero" className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+              <span className="text-white text-xs font-bold">NX</span>
+            </div>
+            <span className="text-lg font-bold tracking-tight text-base-content">NX036</span>
+          </a>
+        </div>
 
-        <div className="flex items-center gap-1">
+        <div className="navbar-center hidden md:flex gap-1">
           {[
             { label: 'Quema', href: '#burn' },
             { label: 'DEX', href: '#dex' },
@@ -42,12 +44,14 @@ export default function Navbar() {
             <a
               key={label}
               href={href}
-              className="text-sm text-base-content/70 hover:text-primary px-3 py-2 rounded-lg hover:bg-primary/10 transition-all hidden md:block"
+              className="text-sm text-base-content/70 hover:text-primary px-3 py-2 rounded-lg hover:bg-primary/10 transition-all"
             >
               {label}
             </a>
           ))}
-          <div className="w-px h-5 bg-base-300 mx-3 hidden md:block" />
+        </div>
+
+        <div className="navbar-end">
           <a
             href="#cta"
             className="btn btn-primary btn-sm text-sm font-semibold rounded-lg"

@@ -209,7 +209,7 @@ export default function EcommerceBurnScale() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-3 py-1 uppercase tracking-[0.15em] mb-4">
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">
             Potencial de quema
           </span>
           <h2 className="text-4xl font-bold tracking-tight mb-6">
