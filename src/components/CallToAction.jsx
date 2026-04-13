@@ -1,9 +1,11 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 export default function CallToAction() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const { t } = useTranslation()
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -12,6 +14,13 @@ export default function CallToAction() {
 
   const glowY = useTransform(scrollYProgress, [0, 1], ['20%', '-20%'])
   const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.1, 0.9])
+
+  const trustItems = [
+    { icon: '🔐', key: 'audited' },
+    { icon: '⛓️', key: 'bnbChain' },
+    { icon: '🔒', key: 'teamLocked' },
+    { icon: '🔥', key: 'maxBurn' },
+  ]
 
   return (
     <section className="py-32 relative overflow-hidden">
@@ -31,14 +40,12 @@ export default function CallToAction() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl font-bold tracking-tight mb-6 leading-tight">
-            Listo para unirte al
+            {t('cta.title')}
             <br />
-            <span className="gradient-text">ecosistema NX036</span>?
+            <span className="gradient-text">{t('cta.titleHighlight')}</span>?
           </h2>
           <p className="text-base-content/70 text-lg mb-10 max-w-xl mx-auto">
-            Un token deflacionario con e-commerce integrado, staking de 90 días,
-            equipo bloqueado 3-5 años y buyback transparente.
-            Verifica todo on-chain.
+            {t('cta.description')}
           </p>
 
           <div className="flex gap-4 justify-center flex-wrap">
@@ -48,7 +55,7 @@ export default function CallToAction() {
               whileTap={{ scale: 0.98 }}
               className="btn btn-primary btn-lg"
             >
-              Comprar NX036
+              {t('cta.buyBtn')}
             </motion.a>
             <motion.a
               href="#"
@@ -56,7 +63,7 @@ export default function CallToAction() {
               whileTap={{ scale: 0.98 }}
               className="btn btn-outline btn-lg"
             >
-              Leer Whitepaper
+              {t('cta.whitepaperBtn')}
             </motion.a>
           </div>
 
@@ -67,15 +74,10 @@ export default function CallToAction() {
             transition={{ delay: 0.6 }}
             className="mt-14 flex justify-center gap-8 flex-wrap"
           >
-            {[
-              { icon: '🔐', label: 'Contratos auditados' },
-              { icon: '⛓️', label: 'BNB Chain' },
-              { icon: '🔒', label: 'Equipo bloqueado' },
-              { icon: '🔥', label: '50% max burn' },
-            ].map(({ icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm text-base-content/70">
+            {trustItems.map(({ icon, key }) => (
+              <div key={key} className="flex items-center gap-2 text-sm text-base-content/70">
                 <span>{icon}</span>
-                <span>{label}</span>
+                <span>{t(`cta.trust.${key}`)}</span>
               </div>
             ))}
           </motion.div>

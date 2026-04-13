@@ -1,17 +1,12 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import CountUp from 'react-countup'
-
-const stats = [
-  { value: 1, suffix: ' Trillón', label: 'Supply Total' },
-  { value: 50, suffix: '%', label: 'Quema Máxima' },
-  { value: 5, suffix: ' niveles', label: 'E-Commerce' },
-  { value: 90, suffix: ' días', label: 'Staking Airdrop' },
-]
+import { useTranslation } from 'react-i18next'
 
 export default function TokenIntro() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const { t } = useTranslation()
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -19,6 +14,19 @@ export default function TokenIntro() {
   })
   const headerY = useTransform(scrollYProgress, [0, 1], [60, -40])
   const cardsY = useTransform(scrollYProgress, [0, 1], [40, -20])
+
+  const stats = [
+    { value: 1, suffix: ` ${t('tokenIntro.stats.supplyValue')}`, label: t('tokenIntro.stats.supply') },
+    { value: 50, suffix: '%', label: t('tokenIntro.stats.maxBurn') },
+    { value: 5, suffix: ` ${t('tokenIntro.stats.ecommerceValue')}`, label: t('tokenIntro.stats.ecommerce') },
+    { value: 90, suffix: ` ${t('tokenIntro.stats.stakingValue')}`, label: t('tokenIntro.stats.staking') },
+  ]
+
+  const steps = [
+    { step: '1', icon: '🔥', titleKey: 'tokenIntro.steps.burn.title', descKey: 'tokenIntro.steps.burn.desc' },
+    { step: '2', icon: '🛒', titleKey: 'tokenIntro.steps.ecommerce.title', descKey: 'tokenIntro.steps.ecommerce.desc' },
+    { step: '3', icon: '⚡', titleKey: 'tokenIntro.steps.staking.title', descKey: 'tokenIntro.steps.staking.desc' },
+  ]
 
   return (
     <section className="py-28 relative overflow-hidden">
@@ -30,15 +38,18 @@ export default function TokenIntro() {
           style={{ y: headerY }}
           className="text-center mb-16"
         >
-          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 1</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">{t('tokenIntro.badge')}</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            ¿Qué es <span className="gradient-text">NX036</span>?
+            {t('tokenIntro.title').split('<gradient>')[0]}
+            <span className="gradient-text">{t('tokenIntro.title').replace(/.*<gradient>/, '').replace(/<\/gradient>.*/, '')}</span>
+            {t('tokenIntro.title').split('</gradient>')[1]}
           </h2>
           <p className="text-base-content/70 max-w-2xl mx-auto text-lg leading-relaxed">
-            Un token con <strong className="text-base-content">supply fijo</strong> que no permite generar más.
-            Cada vez que alguien transfiere, compra o usa el e-commerce,
-            <strong className="text-primary"> una parte desaparece para siempre</strong>,
-            reduciendo los tokens en circulación.
+            {t('tokenIntro.description').split('<strong>')[0]}
+            <strong className="text-base-content">{t('tokenIntro.description').replace(/.*<strong>/, '').replace(/<\/strong>.*/, '')}</strong>
+            {t('tokenIntro.description').split('</strong>')[1].split('<strong_primary>')[0]}
+            <strong className="text-primary">{t('tokenIntro.description').replace(/.*<strong_primary>/, '').replace(/<\/strong_primary>.*/, '')}</strong>
+            {t('tokenIntro.description').split('</strong_primary>')[1]}
           </p>
         </motion.div>
 
@@ -74,35 +85,16 @@ export default function TokenIntro() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-16 card bg-base-100 shadow-sm border border-base-300 p-8"
         >
-          <h3 className="text-lg font-bold mb-6 text-center">Así funciona el ecosistema</h3>
+          <h3 className="text-lg font-bold mb-6 text-center">{t('tokenIntro.howItWorks')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              {
-                step: '1',
-                icon: '🔥',
-                title: 'Quema automática',
-                desc: 'Cada transferencia quema un 1% automáticamente. El supply se reduce con cada movimiento.',
-              },
-              {
-                step: '2',
-                icon: '🛒',
-                title: 'E-Commerce NX036',
-                desc: 'Compra productos reales y gana puntos de lealtad. Cada compra quema tokens del pool.',
-              },
-              {
-                step: '3',
-                icon: '⚡',
-                title: 'Staking Diario',
-                desc: 'Stakea tus tokens y recibe recompensas diarias durante 90 días proporcionales a tu stake.',
-              },
-            ].map(({ step, icon, title, desc }) => (
+            {steps.map(({ step, icon, titleKey, descKey }) => (
               <div key={step} className="relative p-5 rounded-xl bg-base-200 border border-base-300">
                 <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-[0.65rem] font-bold text-white">
                   {step}
                 </div>
                 <div className="text-2xl mb-3 mt-1">{icon}</div>
-                <h4 className="text-sm font-bold mb-2">{title}</h4>
-                <p className="text-xs text-base-content/70 leading-relaxed">{desc}</p>
+                <h4 className="text-sm font-bold mb-2">{t(titleKey)}</h4>
+                <p className="text-xs text-base-content/70 leading-relaxed">{t(descKey)}</p>
               </div>
             ))}
           </div>

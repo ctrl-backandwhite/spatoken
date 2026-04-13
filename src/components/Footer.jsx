@@ -1,4 +1,11 @@
+import { useTranslation } from 'react-i18next'
+
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const ecosystemLinks = t('footer.ecosystemLinks', { returnObjects: true })
+  const resourcesLinks = t('footer.resourcesLinks', { returnObjects: true })
+
   return (
     <div className="bg-neutral text-neutral-content">
       <footer className="footer sm:footer-horizontal max-w-7xl mx-auto px-8 py-16">
@@ -11,29 +18,29 @@ export default function Footer() {
             <span className="text-lg font-bold tracking-tight text-neutral-content">NX036</span>
           </div>
           <p className="text-sm text-neutral-content/50 leading-relaxed max-w-xs">
-            Ecosistema deflacionario en BNB Chain con e-commerce integrado y transparencia total on-chain.
+            {t('footer.tagline')}
           </p>
         </aside>
 
         {/* Ecosystem */}
         <nav>
-          <h6 className="footer-title">Ecosistema</h6>
-          {['Token NX036', 'E-Commerce', 'Staking Airdrop', 'Vesting'].map((item) => (
+          <h6 className="footer-title">{t('footer.ecosystem')}</h6>
+          {ecosystemLinks.map((item) => (
             <a key={item} href="#" className="link link-hover">{item}</a>
           ))}
         </nav>
 
         {/* Resources */}
         <nav>
-          <h6 className="footer-title">Recursos</h6>
-          {['Whitepaper', 'Documentación', 'Auditoría', 'GitHub'].map((item) => (
+          <h6 className="footer-title">{t('footer.resources')}</h6>
+          {resourcesLinks.map((item) => (
             <a key={item} href="#" className="link link-hover">{item}</a>
           ))}
         </nav>
 
         {/* Community */}
         <nav>
-          <h6 className="footer-title">Comunidad</h6>
+          <h6 className="footer-title">{t('footer.community')}</h6>
           {[
             { label: 'BscScan', href: '#' },
             { label: 'PancakeSwap', href: '#' },
@@ -48,12 +55,16 @@ export default function Footer() {
       {/* Bottom bar */}
       <footer className="footer sm:footer-horizontal max-w-7xl mx-auto px-8 py-6 border-t border-neutral-content/10">
         <aside>
-          <p className="text-xs text-neutral-content/40">© 2026 NX036. Todos los derechos reservados.</p>
+          <p className="text-xs text-neutral-content/40">{t('footer.copyright')}</p>
         </aside>
         <nav className="md:place-self-center md:justify-self-end">
           <div className="flex gap-6">
-            {['Términos', 'Privacidad', 'Cookies'].map((item) => (
-              <a key={item} href="#" className="link link-hover text-xs text-neutral-content/40">{item}</a>
+            {[
+              { key: 'terms' },
+              { key: 'privacy' },
+              { key: 'cookies' },
+            ].map(({ key }) => (
+              <a key={key} href="#" className="link link-hover text-xs text-neutral-content/40">{t(`footer.${key}`)}</a>
             ))}
           </div>
         </nav>

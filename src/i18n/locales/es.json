@@ -1,0 +1,404 @@
+{
+  "navbar": {
+    "burn": "Quema",
+    "dex": "DEX",
+    "ecommerce": "E-Commerce",
+    "staking": "Staking",
+    "vesting": "Vesting",
+    "roadmap": "Roadmap",
+    "buyToken": "Comprar Token"
+  },
+  "hero": {
+    "badge": "Ecosistema BNB Chain",
+    "title1": "La plataforma comunitaria que",
+    "title2": "puede cambiar tu futuro",
+    "subtitle": "E-commerce integrado, staking y deflación verificable on-chain",
+    "description": "<strong>NX036</strong> es un token deflacionario con una plataforma de e-commerce integrada. Descubre cómo funciona paso a paso — con ejemplos interactivos.",
+    "exploreCta": "Explorar Ecosistema",
+    "whitepaper": "Whitepaper",
+    "scrollHint": "Scroll para descubrir"
+  },
+  "features": {
+    "heading": "Ecosistema",
+    "subheading": "Un ecosistema completo diseñado para alinear incentivos entre holders, equipo y plataforma.",
+    "staking": {
+      "title": "Staking + Airdrop",
+      "desc": "5% del supply se distribuye diariamente entre stakers elegibles durante 90 días. Requiere 24h mínimas para calificar."
+    },
+    "ecommerce": {
+      "title": "E-Commerce Rewards",
+      "desc": "5 niveles de fidelidad (Basic a Diamond). Cada compra quema tokens del pool inmediatamente, reflejados como puntos de lealtad."
+    },
+    "vesting": {
+      "title": "Vesting Escalonado",
+      "desc": "Tokens del equipo bloqueados 3-5 años. Verificable on-chain. Los holders pueden auditar los grants del contrato."
+    },
+    "burnCap": {
+      "title": "Burn Cap Inteligente",
+      "desc": "El 50% del supply es el máximo de quema. Aplica a todas las fuentes: transferencias, burns directos y e-commerce."
+    },
+    "buyback": {
+      "title": "Buyback Transparente",
+      "desc": "Post burn-cap, las comisiones se usan para recomprar NX036. Wallet pública con saldo visible en tiempo real."
+    },
+    "bnbChain": {
+      "title": "BNB Chain",
+      "desc": "Desplegado en BSC para transacciones rápidas y baratas. Compatible con PancakeSwap y todo el ecosistema BNB."
+    }
+  },
+  "tokenIntro": {
+    "badge": "Capítulo 1",
+    "title": "¿Qué es <gradient>NX036</gradient>?",
+    "description": "Un token con <strong>supply fijo</strong> que no permite generar más. Cada vez que alguien transfiere, compra o usa el e-commerce, <strong class='text-primary'>una parte desaparece para siempre</strong>, reduciendo los tokens en circulación.",
+    "stats": {
+      "supply": "Supply Total",
+      "maxBurn": "Quema Máxima",
+      "ecommerce": "E-Commerce",
+      "staking": "Staking Airdrop",
+      "supplyValue": "1 Trillón",
+      "maxBurnValue": "50%",
+      "ecommerceValue": "5 niveles",
+      "stakingValue": "90 días"
+    },
+    "howItWorks": "Así funciona el ecosistema",
+    "steps": {
+      "burn": {
+        "title": "Quema automática",
+        "desc": "Cada transferencia quema un 1% automáticamente. El supply se reduce con cada movimiento."
+      },
+      "ecommerce": {
+        "title": "E-Commerce NX036",
+        "desc": "Compra productos reales y gana puntos de lealtad. Cada compra quema tokens del pool."
+      },
+      "staking": {
+        "title": "Staking Diario",
+        "desc": "Stakea tus tokens y recibe recompensas diarias durante 90 días proporcionales a tu stake."
+      }
+    }
+  },
+  "burnSimulator": {
+    "badge": "Capítulo 2",
+    "title": "Un token que <gradient>se quema</gradient>",
+    "description": "Cada vez que envías NX036 a otra persona, un porcentaje se destruye permanentemente. No va a ninguna wallet — <strong>desaparece del supply total</strong>. Puedes simularlo:",
+    "tokensLabel": "Tokens a enviar",
+    "burnRateLabel": "Tasa de quema:",
+    "burnRateMin": "1% (actual)",
+    "burnRateMid": "5%",
+    "burnRateMax": "10% (máximo)",
+    "simulateBtn": "🔥 Simular Transferencia",
+    "resultSent": "Envías",
+    "resultBurned": "🔥 Quemados",
+    "resultReceived": "✅ Recibidos",
+    "supplyImpact": "Con esta transferencia, el supply total se redujo en <strong>{{count}} tokens</strong> — para siempre. Nadie los puede recuperar.",
+    "note": "💡 La tasa actual es 1% pero el owner puede ajustarla entre 1% y 10%. El tope global es 500 mil millones de tokens quemados (50% del supply). Después de eso, las transferencias siguen sin quema y el dinero recolectado se usa para distribuir tokens a los holders."
+  },
+  "dex": {
+    "badge": "Capítulo 3",
+    "title": "Compra y venta <gradient>inteligente</gradient>",
+    "description": "Cuando compras o vendes NX036 en un DEX como PancakeSwap, se aplican <strong>comisiones fijas e inmutables</strong> que financian el desarrollo del proyecto. <strong class='text-success'>Se queman tokens</strong> en estas operaciones. Mira exactamente a dónde va cada token:",
+    "tabBuy": "🟢 Compra",
+    "tabSell": "🔴 Venta",
+    "amountLabel": "Cantidad",
+    "totalFees": "Total comisiones: {{pct}}%",
+    "burnPerTrade": "1% quema en cada trade",
+    "youReceive": "Recibes: ~{{pct}}%",
+    "simulateBuyBtn": "💱 Simular Compra",
+    "simulateSellBtn": "💱 Simular Venta",
+    "steps": {
+      "buyPancake": "Compras en PancakeSwap",
+      "devFee": "Comisión Desarrollo (2.5%)",
+      "promoFee": "Comisión Promoción (1%)",
+      "dexBurn": "Quema DEX (1%)",
+      "receiveWallet": "Recibes en tu wallet",
+      "sellPancake": "Vendes en PancakeSwap",
+      "buyerReceives": "El comprador recibe"
+    },
+    "resultNote": "De {{amount}} tokens, se retienen <strong class=\"text-warning\">{{devFee}}</strong> para desarrollo{{promoNote}}. <strong class=\"text-success\"> No se queman tokens en operaciones DEX.</strong> Estas comisiones son <strong class=\"text-base-content\">fijas e inmutables</strong> en el contrato.",
+    "promoNote": " + <strong class=\"text-warning\">{{promoFee}}</strong> para promoción"
+  },
+  "ecommerce": {
+    "badge": "Capítulo 4",
+    "title": "Compra en <gradient>NX036 E-Commerce</gradient>",
+    "description": "Nuestra plataforma de e-commerce integra el token directamente. Cada compra que realizas <strong class='text-rose-300'>quema tokens del pool inmediatamente</strong>. El cliente recibe <strong class='text-accent'>puntos de lealtad</strong> canjeables. Cuanto más alto sea su nivel, más tokens se quemarán (Esto es un ejemplo para que se entienda).",
+    "tierLabel": "Tu Nivel",
+    "tokensPerDollar": "Tokens por $1",
+    "shopTitle": "🛒 Tienda NX036",
+    "resultTitle": "📊 Resultado",
+    "selectProduct": "Selecciona un producto para ver qué pasa con los tokens",
+    "willBurn": "Se quemarán",
+    "tierInfo": "{{emoji}} Nivel {{name}} ({{multiplier}}x)",
+    "clickToBuy": "Haz click en \"Comprar\" para ver la animación",
+    "buyBtn": "Comprar {{name}}",
+    "resultSteps": {
+      "registered": "Compra registrada",
+      "burned": "{{count}} tokens quemados del pool",
+      "supplyReduced": "Supply total reducido",
+      "loyaltyAdded": "{{count}} puntos de lealtad acreditados"
+    },
+    "loyaltyPoints": "Tus puntos de lealtad",
+    "loyaltyRedeemable": "Canjeables según la política de la plataforma",
+    "howTitle": "¿Cómo funciona exactamente?",
+    "howSteps": {
+      "1": "Compraran un producto en la tienda NX036 con su método de pago habitual.",
+      "2": "El backend registra su compra en el contrato inteligente con el monto en USD.",
+      "3": "El contrato calcula sus tokens según su nivel y los quema inmediatamente del pool.",
+      "4": "Recibe puntos de lealtad equivalentes. El supply total de NX036 se redujo."
+    },
+    "products": {
+      "bluetooth": "Auriculares Bluetooth",
+      "smartwatch": "Smartwatch Fitness",
+      "keyboard": "Teclado Mecánico",
+      "monitor": "Monitor 27\" 4K"
+    }
+  },
+  "staking": {
+    "badge": "Capítulo 5",
+    "title": "Gana mientras <gradient>holdeas</gradient>",
+    "description": "Stakea tus NX036 y recibe recompensas diarias durante <strong>90 días</strong>. 50 mil millones de tokens se reparten proporcionalmente entre todos los stakers. Necesitas mantener tu stake <strong class='text-primary'>24 horas</strong> como mínimo para empezar a ganar.",
+    "stakeLabel": "Tu Stake",
+    "poolLabel": "Pool total stakeado (otros usuarios)",
+    "shareLabel": "Tu participación del pool",
+    "dailyLabel": "Diario",
+    "totalLabel": "Total 90 días",
+    "simulateBtn": "⚡ Simular 90 días",
+    "simulatingBtn": "Simulando...",
+    "dayProgress": "Día {{day}}/90",
+    "accumulatedLabel": "Tokens acumulados",
+    "timelineStake": "Stake",
+    "timeline24h": "24h",
+    "hour0": "<strong class='text-primary'>Hora 0:</strong> Depositas tus tokens. Entran como \"pendientes\" — aún no ganas recompensas.",
+    "hour24": "<strong class='text-primary'>Hora 24:</strong> Tu stake se activa. Empiezas a recibir tu parte proporcional en cada distribución.",
+    "day90": "<strong class='text-primary'>Día 90:</strong> El programa de staking termina. Puedes retirar tus tokens + todas las recompensas."
+  },
+  "vesting": {
+    "badge": "Capítulo 6",
+    "title": "El equipo <gradient>no puede huir</gradient>",
+    "description": "El 9% del supply destinado al equipo está <strong>bloqueado por contrato inteligente</strong> durante 3 a 5 años. No hay forma de acceder antes. Cualquier persona puede verificarlo on-chain.",
+    "years": {
+      "1": { "label": "Año 1", "desc": "Equipo: 0 tokens. Todo bloqueado." },
+      "2": { "label": "Año 2", "desc": "Equipo: 0 tokens. Todo bloqueado." },
+      "3": { "label": "Año 3", "desc": "Tramo 1: 30B tokens liberados (3%)" },
+      "4": { "label": "Año 4", "desc": "Tramo 2: 30B tokens liberados (6% acum.)" },
+      "5": { "label": "Año 5", "desc": "Tramo 3: 30B tokens liberados (9% total)" }
+    },
+    "progress": "{{current}}B / 90B",
+    "trustTitle": "Verificable en blockchain",
+    "trustDesc": "Los 3 grants de vesting (30B cada uno) están registrados en el contrato NX036Vesting. Cualquiera puede consultar <code>vestedAmount()</code> y <code>releasableAmount()</code> para confirmar que los tokens están bloqueados."
+  },
+  "burnCap": {
+    "badge": "Capítulo 7",
+    "title": "¿Qué pasa al llegar al <gradient>50%</gradient>?",
+    "description": "NX036 tiene un <strong>tope de quema del 50%</strong> del supply (500 mil millones). Cuando se alcanza, la quema se detiene pero las comisiones siguen. Esos fondos se usan para <strong class='text-accent'>recomprar tokens</strong> en el mercado y redistribuirlos, 90% a los holders 10% para la plataforma.",
+    "supplyBurned": "Supply quemado",
+    "capReached": "— TOPE ALCANZADO",
+    "capMarker": "50% CAP",
+    "burnedLabel": "Quemados",
+    "circulatingLabel": "En circulación",
+    "statusLabel": "Estado",
+    "statusBuyback": "🔄 Buyback",
+    "statusBurning": "🔥 Quemando",
+    "sliderStart": "0% quemado",
+    "sliderHint": "Arrastra para explorar →",
+    "animateBtn": "▶ Animar viaje completo",
+    "burnPhase": {
+      "title": "🔥 Fase de Quema (0-50%)",
+      "items": [
+        "Cada transferencia quema tokens",
+        "Compras en e-commerce queman del pool",
+        "Burns directos permitidos",
+        "El supply se reduce activamente"
+      ]
+    },
+    "buybackPhase": {
+      "title": "🔄 Fase de Recompra (post 50%)",
+      "items": [
+        "No se queman más tokens",
+        "Comisiones DEX siguen activas",
+        "Fondos se usan para recomprar NX036",
+        "Buyback wallet visible públicamente"
+      ]
+    }
+  },
+  "burnScale": {
+    "badge": "Potencial de quema",
+    "title": "Un objetivo <gradient>alcanzable</gradient>",
+    "p1": "NX036 tendrá su propio e-commerce que <strong class='text-primary'>quemará tokens en cada compra</strong> según el nivel del usuario.",
+    "p2": "Las siguientes plataformas sirven como referencia de volumen diario. Si NX036 alcanza <strong>volúmenes similares</strong>, así se vería nuestra quema.",
+    "p3": "Estimación con <strong>100 NX036 promedio por orden</strong> (caso mínimo)",
+    "industryAvg": "(media de la industria)",
+    "ourProjection": "Nuestra proyección a mediano plazo",
+    "txPerDay": " tx/día",
+    "burnPerDay": "podemos quemar / día",
+    "burnPerYear": "podemos quemar / año",
+    "supplyPerYear": "del supply al alcance / año",
+    "footnote": "* Volúmenes diarios aproximados basados en datos públicos. Estas plataformas operan en dólares; los volúmenes se usan solo como referencia de escala. La quema proyectada aplica únicamente al e-commerce propio de NX036, según las reglas de quema por nivel de usuario."
+  },
+  "tokenDistribution": {
+    "badge": "Capítulo 8",
+    "title": "<gradient>Distribución</gradient> completa",
+    "description": "1,000,000,000,000 tokens NX036 distribuidos estratégicamente. Sin mint adicional — nunca se crearán más tokens.",
+    "allocations": {
+      "reserve": "CEX listings y market making",
+      "dao": "Fondos de la comunidad",
+      "liquidity": "PancakeSwap pool",
+      "community": "Vesting lineal 6 meses",
+      "team": "Bloqueado 3-5 años",
+      "ecosystem": "Partnerships y growth",
+      "staking": "90 días de rewards"
+    },
+    "summaryCards": {
+      "immediate": {
+        "title": "Inmediatos",
+        "desc": "Reserve, DAO, Liquidity, Ecosystem — disponibles desde el día 1"
+      },
+      "vested": {
+        "title": "Con Vesting",
+        "desc": "Community (6m), Equipo (3-5 años) — liberación gradual"
+      },
+      "stakingPool": {
+        "title": "Staking Pool",
+        "desc": "50B tokens distribuidos diariamente durante 90 días entre stakers"
+      }
+    }
+  },
+  "tokenomics": {
+    "heading": "Tokenomics",
+    "description": "Supply fijo de 1,000,000,000,000 NX036 — sin mint adicional. Distribución diseñada para sostener el ecosistema a largo plazo.",
+    "distributionTitle": "Distribución del Supply",
+    "mechanicsTitle": "Mecánicas Clave",
+    "allocations": {
+      "team": "Equipo"
+    },
+    "mechanics": {
+      "burn": {
+        "title": "Quema Deflacionaria",
+        "desc": "Cada transferencia quema un 1% (configurable hasta 10%). Tope global: 50% del supply."
+      },
+      "dex": {
+        "title": "Comisiones DEX",
+        "desc": "Compra: 2.5% desarrollo + 1% promoción + 1% quema. Venta: 2.5% desarrollo + 1% quema. Fijas e inmutables."
+      },
+      "buyback": {
+        "title": "Recompra Post-Burn",
+        "desc": "Al alcanzar el tope de quema, los fondos de comisiones se destinan a recompra de NX036."
+      },
+      "teamLocked": {
+        "title": "Equipo Bloqueado 3-5 años",
+        "desc": "9% del supply liberado en 3 tramos: 3% al año 3, 3% al año 4, 3% al año 5."
+      }
+    }
+  },
+  "roadmap": {
+    "badge": "Hoja de Ruta",
+    "title": "Roadmap <gradient>del proyecto</gradient>",
+    "description": "Plan de ejecución desde el lanzamiento hasta la consolidación del ecosistema. Cada fase tiene hitos concretos y verificables.",
+    "active": "• Activa",
+    "phases": {
+      "q42026": {
+        "title": "Fundación y Preparación",
+        "period": "Oct – Dic 2026",
+        "items": [
+          "Desarrollo y auditoría de contratos inteligentes",
+          "Lanzamiento del sitio web oficial",
+          "Apertura de canales de comunidad (Telegram, X)",
+          "Campañas de marketing y awareness"
+        ]
+      },
+      "q12027": {
+        "title": "Lanzamiento del Token",
+        "period": "Ene – Mar 2027",
+        "items": [
+          "Deploy en BNB Chain (mainnet)",
+          "Creación de liquidez en PancakeSwap",
+          "Distribución inicial de allocations",
+          "Activación del pool de staking (90 días)",
+          "Inicio de distribución diaria de airdrops",
+          "Listado en CoinGecko y CoinMarketCap"
+        ]
+      },
+      "q22027": {
+        "title": "E-Commerce MVP",
+        "period": "Abr – Jun 2027",
+        "items": [
+          "Lanzamiento de plataforma e-commerce (MVP)",
+          "Sistema de niveles de fidelidad (5 tiers)",
+          "Integración de quema automática por compras",
+          "Puntos de lealtad canjeables",
+          "Onboarding de primeros merchants"
+        ]
+      },
+      "q32027": {
+        "title": "Escalamiento",
+        "period": "Jul – Sep 2027",
+        "items": [
+          "Expansión de catálogo y merchants",
+          "App móvil para e-commerce NX036",
+          "Programa de referidos",
+          "Integración con pasarelas de pago fiat"
+        ]
+      },
+      "q42027": {
+        "title": "Ecosistema Avanzado",
+        "period": "Oct – Dic 2027",
+        "items": [
+          "Gobernanza DAO (propuestas y votaciones)",
+          "Programa de recompra (buyback) post burn-cap",
+          "Dashboard de transparencia on-chain",
+          "Partnerships con marcas internacionales"
+        ]
+      },
+      "q12028": {
+        "title": "Expansión CEX",
+        "period": "Ene – Mar 2028",
+        "items": [
+          "Listado en exchanges centralizados (CEX)",
+          "Bridge a otras blockchains",
+          "Programa de embajadores NX036",
+          "Presencia en eventos y conferencias crypto",
+          "Reportes trimestrales de quema y buyback"
+        ]
+      },
+      "q22028": {
+        "title": "Consolidación",
+        "period": "Abr – Jun 2028",
+        "items": [
+          "NX036 Marketplace V2 con funciones avanzadas",
+          "Sistema de gobernanza mejorado",
+          "Expansión internacional de e-commerce",
+          "Preview del primer tramo de vesting (Año 3)",
+          "Publicación de la hoja de ruta 2028–2030"
+        ]
+      }
+    },
+    "updateTitle": "Actualización continua",
+    "updateDesc": "Este roadmap se actualiza trimestralmente según el progreso real del proyecto. Todos los hitos completados serán verificables on-chain o mediante anuncios públicos. Transparencia total — sin promesas vacías."
+  },
+  "cta": {
+    "title": "Listo para unirte al",
+    "titleHighlight": "ecosistema NX036",
+    "description": "Un token deflacionario con e-commerce integrado, staking de 90 días, equipo bloqueado 3-5 años y buyback transparente. Verifica todo on-chain.",
+    "buyBtn": "Comprar NX036",
+    "whitepaperBtn": "Leer Whitepaper",
+    "trust": {
+      "audited": "Contratos auditados",
+      "bnbChain": "BNB Chain",
+      "teamLocked": "Equipo bloqueado",
+      "maxBurn": "50% max burn"
+    }
+  },
+  "footer": {
+    "tagline": "Ecosistema deflacionario en BNB Chain con e-commerce integrado y transparencia total on-chain.",
+    "ecosystem": "Ecosistema",
+    "ecosystemLinks": ["Token NX036", "E-Commerce", "Staking Airdrop", "Vesting"],
+    "resources": "Recursos",
+    "resourcesLinks": ["Whitepaper", "Documentación", "Auditoría", "GitHub"],
+    "community": "Comunidad",
+    "copyright": "© 2026 NX036. Todos los derechos reservados.",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "cookies": "Cookies"
+  },
+  "splash": {
+    "loading": "Cargando NX036"
+  }
+}

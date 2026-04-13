@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 export default function BurnCapJourney() {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -45,15 +47,13 @@ export default function BurnCapJourney() {
           style={{ y: headerY }}
           className="text-center mb-12"
         >
-          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 7</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">{t('burnCap.badge')}</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            ¿Qué pasa al llegar al <span className="gradient-text">50%</span>?
+            {t('burnCap.title').split('<gradient>')[0]}<span className="gradient-text">{t('burnCap.title').split('<gradient>')[1]?.split('</gradient>')[0]}</span>{t('burnCap.title').split('</gradient>')[1]}
           </h2>
-          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            NX036 tiene un <strong className="text-base-content">tope de quema del 50%</strong> del supply (500 mil millones).
-            Cuando se alcanza, la quema se detiene pero las comisiones siguen. Esos fondos se usan para{' '}
-            <strong className="text-accent">recomprar tokens</strong> en el mercado y redistribuirlos, 90% a los holders 10% para la plataforma.
-          </p>
+          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t('burnCap.description') }}
+          />
         </motion.div>
 
         <motion.div
@@ -65,24 +65,23 @@ export default function BurnCapJourney() {
           {/* Visual meter */}
           <div className="mb-6">
             <div className="flex justify-between text-xs text-base-content/70 mb-2">
-              <span>Supply quemado</span>
+              <span>{t('burnCap.supplyBurned')}</span>
               <span className={capReached ? 'text-rose-400 font-bold' : ''}>
-                {burnPct > 50 ? '50.0' : burnPct.toFixed(1)}% {capReached ? '— TOPE ALCANZADO' : ''}
+                {burnPct > 50 ? '50.0' : burnPct.toFixed(1)}% {capReached ? t('burnCap.capReached') : ''}
               </span>
             </div>
             <div className="h-8 bg-base-200 rounded-full overflow-hidden relative border border-base-300">
               {/* 50% marker */}
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-rose-400 z-10" />
               <div className="absolute left-1/2 -top-5 text-[0.6rem] text-rose-400 -translate-x-1/2 font-bold">
-                50% CAP
+                {t('burnCap.capMarker')}
               </div>
 
               <motion.div
-                className={`h-full rounded-full transition-colors duration-300 ${
-                  capReached
-                    ? 'bg-gradient-to-r from-rose-300 to-rose-400'
-                    : 'bg-gradient-to-r from-primary to-secondary'
-                }`}
+                className={`h-full rounded-full transition-colors duration-300 ${capReached
+                  ? 'bg-gradient-to-r from-rose-300 to-rose-400'
+                  : 'bg-gradient-to-r from-primary to-secondary'
+                  }`}
                 animate={{ width: `${Math.min(burnPct, 50)}%` }}
                 transition={{ duration: 0.1 }}
               />
@@ -92,7 +91,7 @@ export default function BurnCapJourney() {
           {/* Stats grid */}
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="bg-base-200 border border-base-300 rounded-xl p-4 text-center">
-              <div className="text-xs text-base-content/70 mb-1">Quemados</div>
+              <div className="text-xs text-base-content/70 mb-1">{t('burnCap.burnedLabel')}</div>
               <div className="text-lg font-bold font-mono text-error">
                 {burnedTokens > 500_000_000_000
                   ? '500B'
@@ -100,7 +99,7 @@ export default function BurnCapJourney() {
               </div>
             </div>
             <div className="bg-base-200 border border-base-300 rounded-xl p-4 text-center">
-              <div className="text-xs text-base-content/70 mb-1">En circulación</div>
+              <div className="text-xs text-base-content/70 mb-1">{t('burnCap.circulatingLabel')}</div>
               <div className="text-lg font-bold font-mono text-success">
                 {remaining < 500_000_000_000
                   ? '500B'
@@ -108,9 +107,9 @@ export default function BurnCapJourney() {
               </div>
             </div>
             <div className="bg-base-200 border border-base-300 rounded-xl p-4 text-center">
-              <div className="text-xs text-base-content/70 mb-1">Estado</div>
+              <div className="text-xs text-base-content/70 mb-1">{t('burnCap.statusLabel')}</div>
               <div className={`text-lg font-bold ${capReached ? 'text-warning' : 'text-primary'}`}>
-                {capReached ? '🔄 Buyback' : '🔥 Quemando'}
+                {capReached ? t('burnCap.statusBuyback') : t('burnCap.statusBurning')}
               </div>
             </div>
           </div>
@@ -127,11 +126,11 @@ export default function BurnCapJourney() {
                 setBurnPct(Number(e.target.value))
                 setAnimating(false)
               }}
-              className="range range-primary range-sm w-full"
+              className="w-full"
             />
             <div className="flex justify-between text-xs text-base-content/70 mt-1">
-              <span>0% quemado</span>
-              <span>Arrastra para explorar →</span>
+              <span>{t('burnCap.sliderStart')}</span>
+              <span>{t('burnCap.sliderHint')}</span>
             </div>
           </div>
 
@@ -141,30 +140,28 @@ export default function BurnCapJourney() {
             onClick={handleAnimate}
             className="btn btn-primary w-full"
           >
-            ▶ Animar viaje completo
+            {t('burnCap.animateBtn')}
           </motion.button>
 
           {/* Phase explanations */}
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className={`card border transition-all ${!capReached ? 'border-primary bg-primary/5' : 'border-base-300 bg-base-200'}`}>
               <div className="card-body p-4">
-                <h4 className="card-title text-sm">🔥 Fase de Quema (0-50%)</h4>
+                <h4 className="card-title text-sm">{t('burnCap.burnPhase.title')}</h4>
                 <ul className="text-xs text-base-content/70 space-y-1.5">
-                  <li>• Cada transferencia quema tokens</li>
-                  <li>• Compras en e-commerce queman del pool</li>
-                  <li>• Burns directos permitidos</li>
-                  <li>• El supply se reduce activamente</li>
+                  {t('burnCap.burnPhase.items', { returnObjects: true }).map((item, i) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
               </div>
             </div>
             <div className={`card border transition-all ${capReached ? 'border-accent bg-accent/5' : 'border-base-300 bg-base-200'}`}>
               <div className="card-body p-4">
-                <h4 className="card-title text-sm">🔄 Fase de Recompra (post 50%)</h4>
+                <h4 className="card-title text-sm">{t('burnCap.buybackPhase.title')}</h4>
                 <ul className="text-xs text-base-content/70 space-y-1.5">
-                  <li>• No se queman más tokens</li>
-                  <li>• Comisiones DEX siguen activas</li>
-                  <li>• Fondos se usan para recomprar NX036</li>
-                  <li>• Buyback wallet visible públicamente</li>
+                  {t('burnCap.buybackPhase.items', { returnObjects: true }).map((item, i) => (
+                    <li key={i}>• {item}</li>
+                  ))}
                 </ul>
               </div>
             </div>

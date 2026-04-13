@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import CountUp from 'react-countup'
+import { useTranslation } from 'react-i18next'
 
 const platforms = [
   {
@@ -77,6 +78,7 @@ const maxTx = platforms[platforms.length - 1].dailyTx
 const BURN_RATE = 0.01
 
 function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
+  const { t } = useTranslation()
   const isActive = isInView && index <= activeIndex
   const burnDaily = highlight ? platform.dailyTx * platform.avgOrder * BURN_RATE : 0
   const barWidth = (platform.dailyTx / maxTx) * 100
@@ -98,7 +100,7 @@ function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          Nuestra proyección a mediano plazo
+          {t('burnScale.ourProjection')}
         </motion.div>
       )}
       <div className="flex items-center gap-3">
@@ -110,11 +112,11 @@ function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
           <div className="flex items-baseline justify-between mb-1">
             <span className={`font-semibold ${highlight ? 'text-sm text-primary' : 'text-xs'}`}>
               {platform.name}
-              {highlight && <span className="text-xs font-normal text-base-content/70 ml-2">(media de la industria)</span>}
+              {highlight && <span className="text-xs font-normal text-base-content/70 ml-2">{t('burnScale.industryAvg')}</span>}
             </span>
             <span className="text-[11px] text-base-content/70 font-mono">
               {isActive && (
-                <CountUp end={platform.dailyTx} duration={1.8} separator="," suffix=" tx/día" />
+                <CountUp end={platform.dailyTx} duration={1.8} separator="," suffix={t('burnScale.txPerDay')} />
               )}
             </span>
           </div>
@@ -164,6 +166,7 @@ function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
 }
 
 export default function EcommerceBurnScale() {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
   const [activeIndex, setActiveIndex] = useState(-1)
@@ -210,25 +213,20 @@ export default function EcommerceBurnScale() {
           className="text-center mb-14"
         >
           <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">
-            Potencial de quema
+            {t('burnScale.badge')}
           </span>
           <h2 className="text-4xl font-bold tracking-tight mb-6">
-            Un objetivo{' '}
-            <span className="gradient-text">alcanzable</span>
+            {t('burnScale.title').split('<gradient>')[0]}<span className="gradient-text">{t('burnScale.title').split('<gradient>')[1]?.split('</gradient>')[0]}</span>{t('burnScale.title').split('</gradient>')[1]}
           </h2>
-          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            NX036 tendrá su propio e-commerce que{' '}
-            <strong className="text-primary">quemará tokens en cada compra</strong> según
-            el nivel del usuario.
-          </p>
-          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed mt-4">
-            Las siguientes plataformas sirven como referencia de volumen diario.
-            Si NX036 alcanza <strong className="text-base-content">volúmenes similares</strong>,
-            así se vería nuestra quema.
-          </p>
-          <p className="text-sm text-base-content/70/80 mt-4">
-            Estimación con <strong className="text-base-content">100 NX036 promedio por orden</strong> (caso mínimo)
-          </p>
+          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t('burnScale.p1') }}
+          />
+          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed mt-4"
+            dangerouslySetInnerHTML={{ __html: t('burnScale.p2') }}
+          />
+          <p className="text-sm text-base-content/70/80 mt-4"
+            dangerouslySetInnerHTML={{ __html: t('burnScale.p3') }}
+          />
         </motion.div>
 
         {/* Reference platform rows */}
@@ -268,7 +266,7 @@ export default function EcommerceBurnScale() {
                 <CountUp end={nx036BurnDaily} duration={2.5} separator="," />
               )}
             </div>
-            <div className="text-xs text-base-content/70">podemos quemar / día</div>
+            <div className="text-xs text-base-content/70">{t('burnScale.burnPerDay')}</div>
           </div>
           <div className="card bg-base-100 shadow-sm border border-base-300 p-6 text-center">
             <div className="text-2xl font-extrabold font-mono gradient-text mb-1">
@@ -276,7 +274,7 @@ export default function EcommerceBurnScale() {
                 <CountUp end={nx036BurnYearly} duration={2.5} separator="," />
               )}
             </div>
-            <div className="text-xs text-base-content/70">podemos quemar / año</div>
+            <div className="text-xs text-base-content/70">{t('burnScale.burnPerYear')}</div>
           </div>
           <div className="card bg-primary/5 border border-primary/20 p-6 text-center">
             <div className="text-2xl font-extrabold font-mono text-primary mb-1">
@@ -289,7 +287,7 @@ export default function EcommerceBurnScale() {
                 />
               )}
             </div>
-            <div className="text-xs text-base-content/70">del supply al alcance / año</div>
+            <div className="text-xs text-base-content/70">{t('burnScale.supplyPerYear')}</div>
           </div>
         </motion.div>
 
@@ -300,9 +298,7 @@ export default function EcommerceBurnScale() {
           transition={{ delay: 1 }}
           className="text-center text-xs text-base-content/70 mt-6 max-w-xl mx-auto"
         >
-          * Volúmenes diarios aproximados basados en datos públicos. Estas plataformas operan en dólares;
-          los volúmenes se usan solo como referencia de escala. La quema proyectada aplica
-          únicamente al e-commerce propio de NX036, según las reglas de quema por nivel de usuario.
+          {t('burnScale.footnote')}
         </motion.p>
       </div>
     </section>

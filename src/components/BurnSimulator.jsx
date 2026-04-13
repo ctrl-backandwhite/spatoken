@@ -1,10 +1,12 @@
 import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
+import { useTranslation } from 'react-i18next'
 
 export default function BurnSimulator() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const { t } = useTranslation()
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -43,15 +45,15 @@ export default function BurnSimulator() {
           style={{ y: headerY }}
           className="text-center mb-12"
         >
-          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 2</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">{t('burnSimulator.badge')}</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            Un token que <span className="gradient-text">se quema</span>
+            {t('burnSimulator.title').split('<gradient>')[0]}
+            <span className="gradient-text">{t('burnSimulator.title').replace(/.*<gradient>/, '').replace(/<\/gradient>.*/, '')}</span>
+            {t('burnSimulator.title').split('</gradient>')[1]}
           </h2>
-          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            Cada vez que envías NX036 a otra persona, un porcentaje se destruye permanentemente.
-            No va a ninguna wallet — <strong className="text-base-content">desaparece del supply total</strong>.
-            Puedes simularlo:
-          </p>
+          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t('burnSimulator.description') }}
+          />
         </motion.div>
 
         <motion.div
@@ -63,7 +65,7 @@ export default function BurnSimulator() {
           {/* Input */}
           <div className="mb-6">
             <label className="text-xs text-base-content/70 uppercase tracking-wider block mb-2">
-              Tokens a enviar
+              {t('burnSimulator.tokensLabel')}
             </label>
             <input
               type="range"
@@ -75,7 +77,7 @@ export default function BurnSimulator() {
                 setAmount(Number(e.target.value))
                 setShowResult(false)
               }}
-              className="range range-primary range-sm w-full"
+              className="w-full"
             />
             <div className="flex justify-between text-sm mt-2">
               <span className="text-base-content/70">100</span>
@@ -87,7 +89,7 @@ export default function BurnSimulator() {
           {/* Burn rate */}
           <div className="mb-8">
             <label className="text-xs text-base-content/70 uppercase tracking-wider block mb-2">
-              Tasa de quema: <span className="text-primary font-bold">{burnRate}%</span>
+              {t('burnSimulator.burnRateLabel')} <span className="text-primary font-bold">{burnRate}%</span>
             </label>
             <input
               type="range"
@@ -99,12 +101,12 @@ export default function BurnSimulator() {
                 setBurnRate(Number(e.target.value))
                 setShowResult(false)
               }}
-              className="range range-secondary range-sm w-full"
+              className="range-secondary w-full"
             />
             <div className="flex justify-between text-xs text-base-content/70 mt-1">
-              <span>1% (actual)</span>
-              <span>5%</span>
-              <span>10% (máximo)</span>
+              <span>{t('burnSimulator.burnRateMin')}</span>
+              <span>{t('burnSimulator.burnRateMid')}</span>
+              <span>{t('burnSimulator.burnRateMax')}</span>
             </div>
           </div>
 
@@ -115,7 +117,7 @@ export default function BurnSimulator() {
             onClick={handleSimulate}
             className="btn btn-primary w-full"
           >
-            🔥 Simular Transferencia
+            {t('burnSimulator.simulateBtn')}
           </motion.button>
 
           {/* Animated result */}
@@ -132,7 +134,7 @@ export default function BurnSimulator() {
                 {/* Flow animation */}
                 <div className="flex items-center justify-between gap-3 mb-6">
                   <div className="flex-1 bg-base-200 border border-base-300 rounded-xl p-4 text-center">
-                    <div className="text-xs text-base-content/70 mb-1">Envías</div>
+                    <div className="text-xs text-base-content/70 mb-1">{t('burnSimulator.resultSent')}</div>
                     <div className="text-lg font-bold font-mono">{amount.toLocaleString()}</div>
                   </div>
 
@@ -154,7 +156,7 @@ export default function BurnSimulator() {
                       transition={{ delay: 0.4 }}
                       className="bg-error/10 border border-error/30 rounded-xl p-3 text-center"
                     >
-                      <div className="text-xs text-error mb-1">🔥 Quemados</div>
+                      <div className="text-xs text-error mb-1">{t('burnSimulator.resultBurned')}</div>
                       <div className="text-lg font-bold font-mono text-error">
                         <CountUp end={burned} decimals={burned % 1 !== 0 ? 2 : 0} duration={1.5} separator="," key={key + 'b'} />
                       </div>
@@ -166,7 +168,7 @@ export default function BurnSimulator() {
                       transition={{ delay: 0.6 }}
                       className="bg-success/10 border border-success/30 rounded-xl p-3 text-center"
                     >
-                      <div className="text-xs text-success mb-1">✅ Recibidos</div>
+                      <div className="text-xs text-success mb-1">{t('burnSimulator.resultReceived')}</div>
                       <div className="text-lg font-bold font-mono text-success">
                         <CountUp end={received} decimals={received % 1 !== 0 ? 2 : 0} duration={1.5} separator="," key={key + 'r'} />
                       </div>
@@ -181,11 +183,9 @@ export default function BurnSimulator() {
                   transition={{ delay: 0.8 }}
                   className="bg-base-200 border border-base-300 rounded-xl p-4 text-center"
                 >
-                  <p className="text-sm text-base-content/70">
-                    Con esta transferencia, el supply total se redujo en{' '}
-                    <strong className="text-primary">{burned.toLocaleString()} tokens</strong>{' '}
-                    — para siempre. Nadie los puede recuperar.
-                  </p>
+                  <p className="text-sm text-base-content/70"
+                    dangerouslySetInnerHTML={{ __html: t('burnSimulator.supplyImpact', { count: burned.toLocaleString() }) }}
+                  />
                 </motion.div>
               </motion.div>
             )}
@@ -199,9 +199,7 @@ export default function BurnSimulator() {
           transition={{ delay: 1 }}
           className="text-center text-xs text-base-content/70 mt-8 max-w-lg mx-auto"
         >
-          💡 La tasa actual es 1% pero el owner puede ajustarla entre 1% y 10%.
-          El tope global es 500 mil millones de tokens quemados (50% del supply).
-          Después de eso, las transferencias siguen sin quema y el dinero recolectado se usa para distribuir tokens a los holders.
+          {t('burnSimulator.note')}
         </motion.p>
       </div>
     </section>

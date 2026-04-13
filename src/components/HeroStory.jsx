@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import gsap from 'gsap'
+import { useTranslation } from 'react-i18next'
 
 export default function HeroStory() {
   const titleRef = useRef(null)
   const subtitleRef = useRef(null)
   const scrollRef = useRef(null)
   const sectionRef = useRef(null)
+  const { t } = useTranslation()
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -61,36 +63,35 @@ export default function HeroStory() {
       <motion.div style={{ y: textY, opacity, scale }} className="relative z-10 max-w-4xl mx-auto px-8">
         <div className="mb-8">
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-4 py-1.5 uppercase tracking-widest">
-            Ecosistema BNB Chain
+            {t('hero.badge')}
           </span>
         </div>
 
         <h1 ref={titleRef} className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight mb-6 leading-[1.15]">
-          <span className="text-base-content">La plataforma comunitaria que</span>
+          <span className="text-base-content">{t('hero.title1')}</span>
           <br />
-          <span className="gradient-text">puede cambiar tu futuro</span>
+          <span className="gradient-text">{t('hero.title2')}</span>
           <br />
           <span className="text-base-content/70 font-normal text-[0.5em] block mt-4">
-            E-commerce integrado, staking y deflación verificable on-chain
+            {t('hero.subtitle')}
           </span>
         </h1>
 
-        <motion.p ref={subtitleRef} style={{ y: subtitleY }} className="text-lg text-base-content/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-          <strong className="text-base-content">NX036</strong> es un token deflacionario con una plataforma de e-commerce
-          integrada. Descubre cómo funciona paso a paso — con ejemplos interactivos.
-        </motion.p>
+        <motion.p ref={subtitleRef} style={{ y: subtitleY }} className="text-lg text-base-content/70 max-w-2xl mx-auto mb-10 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: t('hero.description') }}
+        />
 
         <div className="flex gap-4 justify-center flex-wrap mb-16">
           <a href="#burn" className="btn btn-primary btn-lg rounded-lg font-semibold">
-            Explorar Ecosistema
+            {t('hero.exploreCta')}
           </a>
           <a href="#cta" className="btn btn-outline btn-lg rounded-lg font-semibold">
-            Whitepaper
+            {t('hero.whitepaper')}
           </a>
         </div>
 
         <div ref={scrollRef} className="flex flex-col items-center gap-2 text-base-content/70">
-          <span className="text-xs uppercase tracking-widest font-medium">Scroll para descubrir</span>
+          <span className="text-xs uppercase tracking-widest font-medium">{t('hero.scrollHint')}</span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9" />
           </svg>

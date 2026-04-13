@@ -1,107 +1,30 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
-const phases = [
-  {
-    quarter: 'Q4 2026',
-    period: 'Oct – Dic 2026',
-    title: 'Fundación y Preparación',
-    icon: '🔧',
-    status: 'active',
-    items: [
-      'Desarrollo y auditoría de contratos inteligentes',
-      'Lanzamiento del sitio web oficial',
-      'Apertura de canales de comunidad (Telegram, X)',
-      'Campañas de marketing y awareness',
-    ],
-  },
-  {
-    quarter: 'Q1 2027',
-    period: 'Ene – Mar 2027',
-    title: 'Lanzamiento del Token',
-    icon: '🚀',
-    status: 'upcoming',
-    items: [
-      'Deploy en BNB Chain (mainnet)',
-      'Creación de liquidez en PancakeSwap',
-      'Distribución inicial de allocations',
-      'Activación del pool de staking (90 días)',
-      'Inicio de distribución diaria de airdrops',
-      'Listado en CoinGecko y CoinMarketCap',
-    ],
-  },
-  {
-    quarter: 'Q2 2027',
-    period: 'Abr – Jun 2027',
-    title: 'E-Commerce MVP',
-    icon: '🛒',
-    status: 'upcoming',
-    items: [
-      'Lanzamiento de plataforma e-commerce (MVP)',
-      'Sistema de niveles de fidelidad (5 tiers)',
-      'Integración de quema automática por compras',
-      'Puntos de lealtad canjeables',
-      'Onboarding de primeros merchants',
-    ],
-  },
-  {
-    quarter: 'Q3 2027',
-    period: 'Jul – Sep 2027',
-    title: 'Escalamiento',
-    icon: '📱',
-    status: 'upcoming',
-    items: [
-      'Expansión de catálogo y merchants',
-      'App móvil para e-commerce NX036',
-      'Programa de referidos',
-      'Integración con pasarelas de pago fiat',
-    ],
-  },
-  {
-    quarter: 'Q4 2027',
-    period: 'Oct – Dic 2027',
-    title: 'Ecosistema Avanzado',
-    icon: '🏛️',
-    status: 'upcoming',
-    items: [
-      'Gobernanza DAO (propuestas y votaciones)',
-      'Programa de recompra (buyback) post burn-cap',
-      'Dashboard de transparencia on-chain',
-      'Partnerships con marcas internacionales',
-    ],
-  },
-  {
-    quarter: 'Q1 2028',
-    period: 'Ene – Mar 2028',
-    title: 'Expansión CEX',
-    icon: '🌐',
-    status: 'upcoming',
-    items: [
-      'Listado en exchanges centralizados (CEX)',
-      'Bridge a otras blockchains',
-      'Programa de embajadores NX036',
-      'Presencia en eventos y conferencias crypto',
-      'Reportes trimestrales de quema y buyback',
-    ],
-  },
-  {
-    quarter: 'Q2 2028',
-    period: 'Abr – Jun 2028',
-    title: 'Consolidación',
-    icon: '💎',
-    status: 'upcoming',
-    items: [
-      'NX036 Marketplace V2 con funciones avanzadas',
-      'Sistema de gobernanza mejorado',
-      'Expansión internacional de e-commerce',
-      'Preview del primer tramo de vesting (Año 3)',
-      'Publicación de la hoja de ruta 2028–2030',
-    ],
-  },
+const phaseStaticData = [
+  { quarter: 'Q4 2026', key: 'q42026', icon: '🔧', status: 'active' },
+  { quarter: 'Q1 2027', key: 'q12027', icon: '🚀', status: 'upcoming' },
+  { quarter: 'Q2 2027', key: 'q22027', icon: '🛒', status: 'upcoming' },
+  { quarter: 'Q3 2027', key: 'q32027', icon: '📱', status: 'upcoming' },
+  { quarter: 'Q4 2027', key: 'q42027', icon: '🏛️', status: 'upcoming' },
+  { quarter: 'Q1 2028', key: 'q12028', icon: '🌐', status: 'upcoming' },
+  { quarter: 'Q2 2028', key: 'q22028', icon: '💎', status: 'upcoming' },
 ]
 
 export default function Roadmap() {
+  const { t } = useTranslation()
   const ref = useRef(null)
+
+  const phases = phaseStaticData.map(({ quarter, key, icon, status }) => ({
+    quarter,
+    key,
+    icon,
+    status,
+    period: t(`roadmap.phases.${key}.period`),
+    title: t(`roadmap.phases.${key}.title`),
+    items: t(`roadmap.phases.${key}.items`, { returnObjects: true }),
+  }))
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   const { scrollYProgress } = useScroll({
@@ -121,20 +44,19 @@ export default function Roadmap() {
           className="text-center mb-14"
         >
           <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">
-            Hoja de Ruta
+            {t('roadmap.badge')}
           </span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            <span className="gradient-text">Roadmap</span> del proyecto
+            {t('roadmap.title').split('<gradient>')[0]}<span className="gradient-text">{t('roadmap.title').split('<gradient>')[1]?.split('</gradient>')[0]}</span>{t('roadmap.title').split('</gradient>')[1]}
           </h2>
           <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            Plan de ejecución desde el lanzamiento hasta la consolidación del ecosistema.
-            Cada fase tiene hitos concretos y verificables.
+            {t('roadmap.description')}
           </p>
         </motion.div>
 
         {/* Timeline */}
         <ul className="timeline timeline-snap-icon timeline-vertical max-md:timeline-compact">
-          {phases.map(({ quarter, period, title, icon, status, items }, i) => {
+          {phases.map(({ quarter, key, period, title, icon, status, items }, i) => {
             const isLeft = i % 2 === 0
             const isActive = status === 'active'
             const prevActive = i > 0 && phases[i - 1].status === 'active'
@@ -146,23 +68,21 @@ export default function Roadmap() {
                 transition={{ duration: 0.6, delay: i * 0.15 }}
               >
                 <div
-                  className={`card border transition-all ${
-                    isActive
+                  className={`card border transition-all ${isActive
                       ? 'bg-base-100 border-primary/30 shadow-md'
                       : 'bg-base-100 border-base-300 shadow-sm'
-                  }`}
+                    }`}
                 >
                   <div className="card-body p-6">
                     {/* Quarter badge */}
                     <div className="flex items-center justify-between mb-1">
                       <span
-                        className={`badge badge-sm ${
-                          isActive
+                        className={`badge badge-sm ${isActive
                             ? 'badge-primary'
                             : 'badge-ghost'
-                        }`}
+                          }`}
                       >
-                        {quarter} {isActive && '• Activa'}
+                        {quarter} {isActive && t('roadmap.active')}
                       </span>
                       <span className="text-[0.6rem] text-base-content/70">{period}</span>
                     </div>
@@ -176,9 +96,8 @@ export default function Roadmap() {
                           className="text-xs text-base-content/70 flex items-start gap-2 leading-relaxed"
                         >
                           <span
-                            className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${
-                              isActive ? 'bg-accent' : 'bg-base-300'
-                            }`}
+                            className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? 'bg-accent' : 'bg-base-300'
+                              }`}
                           />
                           {item}
                         </li>
@@ -190,7 +109,7 @@ export default function Roadmap() {
             )
 
             return (
-              <li key={quarter}>
+              <li key={key}>
                 {i > 0 && <hr className={prevActive || isActive ? 'bg-primary' : ''} />}
 
                 {isLeft && (
@@ -201,11 +120,10 @@ export default function Roadmap() {
 
                 <div className="timeline-middle">
                   <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center text-lg border-2 shadow-sm ${
-                      isActive
+                    className={`w-12 h-12 rounded-full flex items-center justify-center text-lg border-2 shadow-sm ${isActive
                         ? 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
                         : 'bg-base-100 border-base-300'
-                    }`}
+                      }`}
                   >
                     {icon}
                   </div>
@@ -231,11 +149,9 @@ export default function Roadmap() {
           className="mt-4 max-w-2xl mx-auto bg-base-100 border border-base-300 rounded-2xl p-6 text-center shadow-sm"
         >
           <div className="text-2xl mb-3">🗓️</div>
-          <h4 className="text-sm font-bold mb-2">Actualización continua</h4>
+          <h4 className="text-sm font-bold mb-2">{t('roadmap.updateTitle')}</h4>
           <p className="text-xs text-base-content/70 leading-relaxed">
-            Este roadmap se actualiza trimestralmente según el progreso real del proyecto.
-            Todos los hitos completados serán verificables on-chain o mediante anuncios públicos.
-            Transparencia total — sin promesas vacías.
+            {t('roadmap.updateDesc')}
           </p>
         </motion.div>
       </div>

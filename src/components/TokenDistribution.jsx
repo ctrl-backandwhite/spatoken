@@ -1,17 +1,25 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
-const allocations = [
-  { category: 'Reserve / Listings', pct: 25, color: '#fcd34d', desc: 'CEX listings y market making' },
-  { category: 'DAO Treasury', pct: 20, color: '#93c5fd', desc: 'Fondos de la comunidad' },
-  { category: 'Liquidity', pct: 20, color: '#fdba74', desc: 'PancakeSwap pool' },
-  { category: 'Community', pct: 15, color: '#a5b4fc', desc: 'Vesting lineal 6 meses' },
-  { category: 'Equipo', pct: 9, color: '#fca5a5', desc: 'Bloqueado 3-5 años' },
-  { category: 'Ecosystem', pct: 6, color: '#99f6e4', desc: 'Partnerships y growth' },
-  { category: 'Staking Airdrop', pct: 5, color: '#c4b5fd', desc: '90 días de rewards' },
+const allocationData = [
+  { key: 'reserve', category: 'Reserve / Listings', pct: 25, color: '#fcd34d' },
+  { key: 'dao', category: 'DAO Treasury', pct: 20, color: '#93c5fd' },
+  { key: 'liquidity', category: 'Liquidity', pct: 20, color: '#fdba74' },
+  { key: 'community', category: 'Community', pct: 15, color: '#a5b4fc' },
+  { key: 'team', category: null, pct: 9, color: '#fca5a5' },
+  { key: 'ecosystem', category: 'Ecosystem', pct: 6, color: '#99f6e4' },
+  { key: 'staking', category: 'Staking Airdrop', pct: 5, color: '#c4b5fd' },
+]
+
+const summaryCardData = [
+  { key: 'immediate', value: '71%', icon: '⚡' },
+  { key: 'vested', value: '24%', icon: '🔒' },
+  { key: 'stakingPool', value: '5%', icon: '⭐' },
 ]
 
 export default function TokenDistribution() {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -40,27 +48,26 @@ export default function TokenDistribution() {
           style={{ y: headerY }}
           className="text-center mb-14"
         >
-          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 8</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">{t('tokenDistribution.badge')}</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            <span className="gradient-text">Distribución</span> completa
+            <span className="gradient-text">{t('tokenDistribution.title').split('<gradient>')[1]?.split('</gradient>')[0]}</span>{t('tokenDistribution.title').split('</gradient>')[1]}
           </h2>
           <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            1,000,000,000,000 tokens NX036 distribuidos estratégicamente.
-            Sin mint adicional — nunca se crearán más tokens.
+            {t('tokenDistribution.description')}
           </p>
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
-          {allocations.map((a, i) => (
+          {allocationData.map((a, i) => (
             <motion.div
-              key={a.category}
+              key={a.key}
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="flex items-center gap-4 mb-4 group"
             >
               <span className="w-32 text-sm text-base-content/70 shrink-0 group-hover:text-base-content transition-colors">
-                {a.category}
+                {a.category ?? t('tokenomics.allocations.team')}
               </span>
               <div className="flex-1 h-9 bg-base-200 rounded-lg overflow-hidden relative border border-base-300">
                 <motion.div
@@ -72,7 +79,7 @@ export default function TokenDistribution() {
                 />
                 <div className="absolute inset-0 flex items-center justify-between px-3">
                   <span className="text-[0.65rem] text-base-content font-medium">
-                    {a.desc}
+                    {t(`tokenDistribution.allocations.${a.key}`)}
                   </span>
                   <span className="text-xs font-bold font-mono text-base-content">{a.pct}%</span>
                 </div>
@@ -91,34 +98,14 @@ export default function TokenDistribution() {
           transition={{ delay: 1.2 }}
           className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto"
         >
-          {[
-            {
-              title: 'Inmediatos',
-              value: '71%',
-              desc: 'Reserve, DAO, Liquidity, Ecosystem — disponibles desde el día 1',
-              icon: '⚡',
-            },
-            {
-              title: 'Con Vesting',
-              value: '24%',
-              desc: 'Community (6m), Equipo (3-5 años) — liberación gradual',
-              icon: '🔒',
-            },
-            {
-              title: 'Staking Pool',
-              value: '5%',
-              desc: '50B tokens distribuidos diariamente durante 90 días entre stakers',
-              icon: '⭐',
-            },
-          ].map(({ title, value, desc, icon }) => (
-            <div key={title} className="bg-base-100 border border-base-300 rounded-xl p-5 text-center shadow-sm">
+          {summaryCardData.map(({ key, value, icon }) => (
+            <div key={key} className="bg-base-100 border border-base-300 rounded-xl p-5 text-center shadow-sm">
               <div className="text-2xl mb-2">{icon}</div>
               <div className="text-2xl font-bold font-mono gradient-text mb-1">{value}</div>
-              <div className="text-sm font-bold mb-1">{title}</div>
-              <p className="text-xs text-base-content/70">{desc}</p>
+              <div className="text-sm font-bold mb-1">{t(`tokenDistribution.summaryCards.${key}.title`)}</div>
+              <p className="text-xs text-base-content/70">{t(`tokenDistribution.summaryCards.${key}.desc`)}</p>
             </div>
-          ))}
-        </motion.div>
+          ))}        </motion.div>
       </div>
     </section>
   )

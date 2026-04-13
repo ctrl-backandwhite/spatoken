@@ -1,10 +1,12 @@
 import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
+import { useTranslation } from 'react-i18next'
 
 export default function DexDemo() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const { t } = useTranslation()
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -33,18 +35,18 @@ export default function DexDemo() {
   const steps =
     mode === 'buy'
       ? [
-          { label: 'Compras en PancakeSwap', amount, color: 'text-base-content', icon: '💱' },
-          { label: 'Comisión Desarrollo (2.5%)', amount: devFee, color: 'text-warning', icon: '🏗️' },
-          { label: 'Comisión Promoción (1%)', amount: promoFee, color: 'text-warning', icon: '📢' },
-          { label: 'Quema DEX (1%)', amount: dexBurn, color: 'text-error', icon: '🔥' },
-          { label: 'Recibes en tu wallet', amount: userReceives, color: 'text-success', icon: '✅' },
-        ]
+        { label: t('dex.steps.buyPancake'), amount, color: 'text-base-content', icon: '💱' },
+        { label: t('dex.steps.devFee'), amount: devFee, color: 'text-warning', icon: '🏗️' },
+        { label: t('dex.steps.promoFee'), amount: promoFee, color: 'text-warning', icon: '📢' },
+        { label: t('dex.steps.dexBurn'), amount: dexBurn, color: 'text-error', icon: '🔥' },
+        { label: t('dex.steps.receiveWallet'), amount: userReceives, color: 'text-success', icon: '✅' },
+      ]
       : [
-          { label: 'Vendes en PancakeSwap', amount, color: 'text-base-content', icon: '💱' },
-          { label: 'Comisión Desarrollo (2.5%)', amount: devFee, color: 'text-warning', icon: '🏗️' },
-          { label: 'Quema DEX (1%)', amount: dexBurn, color: 'text-error', icon: '🔥' },
-          { label: 'El comprador recibe', amount: userReceives, color: 'text-success', icon: '✅' },
-        ]
+        { label: t('dex.steps.sellPancake'), amount, color: 'text-base-content', icon: '💱' },
+        { label: t('dex.steps.devFee'), amount: devFee, color: 'text-warning', icon: '🏗️' },
+        { label: t('dex.steps.dexBurn'), amount: dexBurn, color: 'text-error', icon: '🔥' },
+        { label: t('dex.steps.buyerReceives'), amount: userReceives, color: 'text-success', icon: '✅' },
+      ]
 
   return (
     <section className="py-28 bg-base-100 relative overflow-hidden">
@@ -64,16 +66,15 @@ export default function DexDemo() {
           style={{ y: headerY }}
           className="text-center mb-12"
         >
-          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 3</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">{t('dex.badge')}</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            Compra y venta <span className="gradient-text">inteligente</span>
+            {t('dex.title').split('<gradient>')[0]}
+            <span className="gradient-text">{t('dex.title').replace(/.*<gradient>/, '').replace(/<\/gradient>.*/, '')}</span>
+            {t('dex.title').split('</gradient>')[1]}
           </h2>
-          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            Cuando compras o vendes NX036 en un DEX como PancakeSwap, se aplican
-            <strong className="text-base-content"> comisiones fijas e inmutables </strong>
-            que financian el desarrollo del proyecto. <strong className="text-success">Se queman tokens</strong> en estas operaciones.
-            Mira exactamente a dónde va cada token:
-          </p>
+          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t('dex.description') }}
+          />
         </motion.div>
 
         <motion.div
@@ -91,13 +92,12 @@ export default function DexDemo() {
                   setMode(m)
                   setShowResult(false)
                 }}
-                className={`flex-1 py-2.5 rounded-lg text-sm font-bold transition-all cursor-pointer ${
-                  mode === m
-                    ? 'btn btn-primary btn-sm'
-                    : 'btn btn-ghost btn-sm text-base-content/70'
-                }`}
+                className={`flex-1 py-2.5 rounded-lg text-sm font-bold transition-all cursor-pointer ${mode === m
+                  ? 'btn btn-primary btn-sm'
+                  : 'btn btn-ghost btn-sm text-base-content/70'
+                  }`}
               >
-                {m === 'buy' ? '🟢 Compra' : '🔴 Venta'}
+                {m === 'buy' ? t('dex.tabBuy') : t('dex.tabSell')}
               </button>
             ))}
           </div>
@@ -105,7 +105,7 @@ export default function DexDemo() {
           {/* Amount slider */}
           <div className="mb-6">
             <label className="text-xs text-base-content/70 uppercase tracking-wider block mb-2">
-              Cantidad
+              {t('dex.amountLabel')}
             </label>
             <input
               type="range"
@@ -117,7 +117,7 @@ export default function DexDemo() {
                 setAmount(Number(e.target.value))
                 setShowResult(false)
               }}
-              className="range range-primary range-sm w-full"
+              className="w-full"
             />
             <div className="text-center text-xl font-bold font-mono gradient-text mt-2">
               {amount.toLocaleString()} NX036
@@ -132,9 +132,9 @@ export default function DexDemo() {
             <div className="bg-success flex-1" title="Recibes" />
           </div>
           <div className="flex justify-between text-[0.65rem] text-base-content/70 mb-6">
-            <span>Total comisiones: {totalFees}%</span>
-            <span>1% quema en cada trade</span>
-            <span>Recibes: ~{((userReceives / amount) * 100).toFixed(1)}%</span>
+            <span>{t('dex.totalFees', { pct: totalFees })}</span>
+            <span>{t('dex.burnPerTrade')}</span>
+            <span>{t('dex.youReceive', { pct: ((userReceives / amount) * 100).toFixed(1) })}</span>
           </div>
 
           <motion.button
@@ -143,7 +143,7 @@ export default function DexDemo() {
             onClick={handleSimulate}
             className="btn btn-primary w-full"
           >
-            💱 Simular {mode === 'buy' ? 'Compra' : 'Venta'}
+            {mode === 'buy' ? t('dex.simulateBuyBtn') : t('dex.simulateSellBtn')}
           </motion.button>
 
           <AnimatePresence mode="wait">
@@ -178,17 +178,18 @@ export default function DexDemo() {
                   transition={{ delay: steps.length * 0.15 + 0.2 }}
                   className="bg-base-200 border border-primary/30 rounded-xl p-4 text-center mt-4"
                 >
-                  <p className="text-sm text-base-content/70">
-                    De {amount.toLocaleString()} tokens, se retienen{' '}
-                    <strong className="text-warning">{devFee.toFixed(0)} para desarrollo</strong>
-                    {mode === 'buy' && (
-                      <>
-                        {' '} + <strong className="text-warning">{promoFee.toFixed(0)} para promoción</strong>
-                      </>
-                    )}.
-                    <strong className="text-success"> No se queman tokens en operaciones DEX.</strong>{' '}
-                    Estas comisiones son <strong className="text-base-content">fijas e inmutables</strong> en el contrato.
-                  </p>
+                  <p className="text-sm text-base-content/70"
+                    dangerouslySetInnerHTML={{
+                      __html: t('dex.resultNote', {
+                        amount: amount.toLocaleString(),
+                        devFee: devFee.toFixed(0),
+                        promoNote: mode === 'buy'
+                          ? t('dex.promoNote', { promoFee: promoFee.toFixed(0), interpolation: { escapeValue: false } })
+                          : '',
+                        interpolation: { escapeValue: false },
+                      })
+                    }}
+                  />
                 </motion.div>
               </motion.div>
             )}

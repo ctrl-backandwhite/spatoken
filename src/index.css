@@ -62,14 +62,90 @@ html {
   @apply w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto;
 }
 
-/* Custom range slider */
-input[type='range']::-webkit-slider-thumb {
-  @apply w-5 h-5 rounded-full bg-white border-2 border-primary cursor-pointer appearance-none shadow-md;
-  margin-top: -6px;
+/* Custom range slider — cross browser */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 9999px;
+  background: oklch(0.90 0.01 270);
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 8px 0;
 }
 
 input[type='range']::-webkit-slider-runnable-track {
-  @apply h-2 bg-border rounded-full;
+  height: 8px;
+  border-radius: 9999px;
+  background: oklch(0.90 0.01 270);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid oklch(0.68 0.12 265);
+  cursor: pointer;
+  margin-top: -7px;
+  box-shadow: 0 2px 8px oklch(0.68 0.12 265 / 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 12px oklch(0.68 0.12 265 / 0.45);
+}
+
+input[type='range']::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+/* Firefox */
+input[type='range']::-moz-range-track {
+  height: 8px;
+  border-radius: 9999px;
+  background: oklch(0.90 0.01 270);
+  border: none;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid oklch(0.68 0.12 265);
+  cursor: pointer;
+  box-shadow: 0 2px 8px oklch(0.68 0.12 265 / 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type='range']::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 12px oklch(0.68 0.12 265 / 0.45);
+}
+
+/* Secondary range variant */
+input[type='range'].range-secondary::-webkit-slider-thumb {
+  border-color: oklch(0.72 0.10 290);
+  box-shadow: 0 2px 8px oklch(0.72 0.10 290 / 0.3);
+}
+
+input[type='range'].range-secondary::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 12px oklch(0.72 0.10 290 / 0.45);
+}
+
+input[type='range'].range-secondary::-moz-range-thumb {
+  border-color: oklch(0.72 0.10 290);
+  box-shadow: 0 2px 8px oklch(0.72 0.10 290 / 0.3);
+}
+
+input[type='range'].range-secondary::-moz-range-thumb:hover {
+  box-shadow: 0 2px 12px oklch(0.72 0.10 290 / 0.45);
 }
 
 /* Section scroll snap hint */

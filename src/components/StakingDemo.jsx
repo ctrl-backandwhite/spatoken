@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
+import { useTranslation } from 'react-i18next'
 
 export default function StakingDemo() {
+  const { t } = useTranslation()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -62,15 +64,13 @@ export default function StakingDemo() {
           style={{ y: headerY }}
           className="text-center mb-12"
         >
-          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 5</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">{t('staking.badge')}</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
-            Gana mientras <span className="gradient-text">holdeas</span>
+            {t('staking.title').split('<gradient>')[0]}<span className="gradient-text">{t('staking.title').split('<gradient>')[1]?.split('</gradient>')[0]}</span>{t('staking.title').split('</gradient>')[1]}
           </h2>
-          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed">
-            Stakea tus NX036 y recibe recompensas diarias durante <strong className="text-base-content">90 días</strong>.
-            50 mil millones de tokens se reparten proporcionalmente entre todos los stakers.
-            Necesitas mantener tu stake <strong className="text-primary">24 horas</strong> como mínimo para empezar a ganar.
-          </p>
+          <p className="text-base-content/70 max-w-2xl mx-auto leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t('staking.description') }}
+          />
         </motion.div>
 
         <motion.div
@@ -84,7 +84,7 @@ export default function StakingDemo() {
             <div>
               <div className="mb-6">
                 <label className="text-xs text-base-content/70 uppercase tracking-wider block mb-2">
-                  Tu Stake
+                  {t('staking.stakeLabel')}
                 </label>
                 <input
                   type="range"
@@ -93,7 +93,7 @@ export default function StakingDemo() {
                   step={1000}
                   value={stakeAmount}
                   onChange={(e) => setStakeAmount(Number(e.target.value))}
-                  className="range range-primary range-sm w-full"
+                  className="w-full"
                 />
                 <div className="text-center text-lg font-bold font-mono gradient-text mt-2">
                   {stakeAmount.toLocaleString()} NX036
@@ -102,7 +102,7 @@ export default function StakingDemo() {
 
               <div className="mb-6">
                 <label className="text-xs text-base-content/70 uppercase tracking-wider block mb-2">
-                  Pool total stakeado (otros usuarios)
+                  {t('staking.poolLabel')}
                 </label>
                 <input
                   type="range"
@@ -111,7 +111,7 @@ export default function StakingDemo() {
                   step={100000}
                   value={totalPool}
                   onChange={(e) => setTotalPool(Number(e.target.value))}
-                  className="range range-secondary range-sm w-full"
+                  className="range-secondary w-full"
                 />
                 <div className="text-center text-sm font-mono text-base-content/70 mt-2">
                   {totalPool.toLocaleString()} NX036
@@ -120,7 +120,7 @@ export default function StakingDemo() {
 
               {/* Your share */}
               <div className="bg-base-200 border border-base-300 rounded-xl p-4 mb-4">
-                <div className="text-xs text-base-content/70 mb-1">Tu participación del pool</div>
+                <div className="text-xs text-base-content/70 mb-1">{t('staking.shareLabel')}</div>
                 <div className="text-2xl font-bold font-mono gradient-text">
                   {(myShare * 100).toFixed(4)}%
                 </div>
@@ -128,13 +128,13 @@ export default function StakingDemo() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-base-200 border border-base-300 rounded-xl p-3 text-center">
-                  <div className="text-xs text-base-content/70 mb-1">Diario</div>
+                  <div className="text-xs text-base-content/70 mb-1">{t('staking.dailyLabel')}</div>
                   <div className="text-sm font-bold font-mono text-success">
                     {dailyReward.toFixed(2)}
                   </div>
                 </div>
                 <div className="bg-base-200 border border-base-300 rounded-xl p-3 text-center">
-                  <div className="text-xs text-base-content/70 mb-1">Total 90 días</div>
+                  <div className="text-xs text-base-content/70 mb-1">{t('staking.totalLabel')}</div>
                   <div className="text-sm font-bold font-mono text-success">
                     {totalReward90.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                   </div>
@@ -151,13 +151,13 @@ export default function StakingDemo() {
                 disabled={simulating}
                 className="btn btn-primary w-full mb-6"
               >
-                ⚡ {simulating ? 'Simulando...' : 'Simular 90 días'}
+                {simulating ? t('staking.simulatingBtn') : t('staking.simulateBtn')}
               </motion.button>
 
               {/* Progress */}
               <div className="mb-4">
                 <div className="flex justify-between text-xs text-base-content/70 mb-1">
-                  <span>Día {day}/90</span>
+                  <span>{t('staking.dayProgress', { day })}</span>
                   <span>{((day / 90) * 100).toFixed(0)}%</span>
                 </div>
                 <div className="h-3 bg-base-300 rounded-full overflow-hidden">
@@ -171,7 +171,7 @@ export default function StakingDemo() {
 
               {/* Accumulated */}
               <div className="bg-base-200 border border-success/30 rounded-xl p-5 text-center mb-4">
-                <div className="text-xs text-base-content/70 mb-2">Tokens acumulados</div>
+                <div className="text-xs text-base-content/70 mb-2">{t('staking.accumulatedLabel')}</div>
                 <div className="text-3xl font-bold font-mono text-success">
                   {day > 0 ? (
                     <CountUp end={accumulated} duration={0.3} separator="," decimals={0} key={simKey + '-' + day} preserveValue />
@@ -186,7 +186,7 @@ export default function StakingDemo() {
               <div className="flex justify-between text-[0.6rem] text-base-content/70">
                 {[0, 1, 24, 30, 60, 90].map((d) => (
                   <span key={d} className={day >= d ? 'text-primary font-bold' : ''}>
-                    {d === 0 ? 'Stake' : d === 1 ? '24h' : `D${d}`}
+                    {d === 0 ? t('staking.timelineStake') : d === 1 ? t('staking.timeline24h') : `D${d}`}
                   </span>
                 ))}
               </div>
@@ -196,18 +196,9 @@ export default function StakingDemo() {
           {/* Explanation */}
           <div className="mt-8 p-4 bg-base-200 border border-base-300 rounded-xl">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-base-content/70">
-              <div className="flex gap-2">
-                <span className="text-primary font-bold shrink-0">Hora 0:</span>
-                <span>Depositas tus tokens. Entran como "pendientes" — aún no ganas recompensas.</span>
-              </div>
-              <div className="flex gap-2">
-                <span className="text-primary font-bold shrink-0">Hora 24:</span>
-                <span>Tu stake se activa. Empiezas a recibir tu parte proporcional en cada distribución.</span>
-              </div>
-              <div className="flex gap-2">
-                <span className="text-primary font-bold shrink-0">Día 90:</span>
-                <span>El programa de staking termina. Puedes retirar tus tokens + todas las recompensas.</span>
-              </div>
+              <div className="flex gap-2" dangerouslySetInnerHTML={{ __html: t('staking.hour0') }} />
+              <div className="flex gap-2" dangerouslySetInnerHTML={{ __html: t('staking.hour24') }} />
+              <div className="flex gap-2" dangerouslySetInnerHTML={{ __html: t('staking.day90') }} />
             </div>
           </div>
         </motion.div>
