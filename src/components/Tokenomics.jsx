@@ -50,10 +50,12 @@ export default function Tokenomics() {
                 { title: 'Recompra Post-Burn', desc: 'Al alcanzar el tope de quema, los fondos de comisiones se destinan a recompra de NX036.', icon: '🔄' },
                 { title: 'Equipo Bloqueado 3-5 años', desc: '9% del supply liberado en 3 tramos: 3% al año 3, 3% al año 4, 3% al año 5.', icon: '🔒' },
               ].map(({ title, desc, icon }) => (
-                <div key={title} className="fade-in p-5 rounded-xl bg-base-200 border border-base-300">
-                  <div className="text-xl mb-2">{icon}</div>
-                  <h4 className="text-[0.95rem] mb-1.5">{title}</h4>
-                  <p className="text-sm text-base-content/70 leading-relaxed">{desc}</p>
+                <div key={title} className="card fade-in border border-base-300 bg-base-200">
+                  <div className="card-body p-5">
+                    <div className="text-xl">{icon}</div>
+                    <h4 className="card-title text-[0.95rem]">{title}</h4>
+                    <p className="text-sm text-base-content/70 leading-relaxed">{desc}</p>
+                  </div>
                 </div>
               ))}
             </div>

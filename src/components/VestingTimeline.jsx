@@ -38,7 +38,7 @@ export default function VestingTimeline() {
           style={{ y: headerY }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-3 py-1 uppercase tracking-[0.15em] mb-4">Capítulo 6</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 6</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
             El equipo <span className="gradient-text">no puede huir</span>
           </h2>
@@ -50,46 +50,27 @@ export default function VestingTimeline() {
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative max-w-3xl mx-auto">
-          {/* Central line */}
-          <div className="absolute left-1/2 -translate-x-0.5 top-0 bottom-0 w-px bg-base-300" />
-
+        <ul className="timeline timeline-snap-icon timeline-vertical max-md:timeline-compact max-w-3xl mx-auto">
           {years.map(({ year, released, cumulative, label, desc }, i) => {
             const isLeft = i % 2 === 0
             const isLocked = released === 0
 
-            return (
+            const cardContent = (
               <motion.div
-                key={year}
-                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.2 }}
-                className={`relative flex items-center mb-12 ${isLeft ? 'justify-start' : 'justify-end'}`}
               >
-                {/* Node */}
-                <div className="absolute left-1/2 -translate-x-1/2 z-10">
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 ${
-                      isLocked
-                        ? 'bg-base-200 border-base-300 text-base-content/70'
-                        : 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
-                    }`}
-                  >
-                    {isLocked ? '🔒' : '✅'}
-                  </div>
-                </div>
-
-                {/* Content card */}
-                <div className={`w-[calc(50%-40px)] ${isLeft ? '' : 'ml-auto'}`}>
-                  <div
-                    className={`p-5 rounded-xl border ${
-                      isLocked
-                        ? 'bg-base-200 border-base-300'
-                        : 'bg-base-200 border-primary/40'
-                    }`}
-                  >
+                <div
+                  className={`card border ${
+                    isLocked
+                      ? 'bg-base-200 border-base-300'
+                      : 'bg-base-200 border-primary/40'
+                  }`}
+                >
+                  <div className="card-body p-5">
                     <div className="flex items-center justify-between mb-2">
-                      <span className={`text-xs font-bold uppercase tracking-wider ${isLocked ? 'text-base-content/70' : 'text-primary'}`}>
+                      <span className={`badge badge-sm ${isLocked ? 'badge-ghost' : 'badge-primary'}`}>
                         {label}
                       </span>
                       {!isLocked && (
@@ -116,8 +97,40 @@ export default function VestingTimeline() {
                 </div>
               </motion.div>
             )
+
+            return (
+              <li key={year}>
+                {i > 0 && <hr className={!isLocked || (i > 0 && years[i - 1].released > 0) ? 'bg-primary' : ''} />}
+
+                {isLeft && (
+                  <div className="timeline-start mb-10 md:text-end">
+                    {cardContent}
+                  </div>
+                )}
+
+                <div className="timeline-middle">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 ${
+                      isLocked
+                        ? 'bg-base-200 border-base-300 text-base-content/70'
+                        : 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
+                    }`}
+                  >
+                    {isLocked ? '🔒' : '✅'}
+                  </div>
+                </div>
+
+                {!isLeft && (
+                  <div className="timeline-end mb-10">
+                    {cardContent}
+                  </div>
+                )}
+
+                {i < years.length - 1 && <hr className={!isLocked ? 'bg-primary' : ''} />}
+              </li>
+            )
           })}
-        </div>
+        </ul>
 
         {/* Trust badge */}
         <motion.div

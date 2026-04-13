@@ -120,7 +120,7 @@ export default function Roadmap() {
           style={{ y: headerY }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-3 py-1 uppercase tracking-[0.15em] mb-4">
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">
             Hoja de Ruta
           </span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
@@ -133,57 +133,33 @@ export default function Roadmap() {
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Central vertical line */}
-          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-base-300" />
-
+        <ul className="timeline timeline-snap-icon timeline-vertical max-md:timeline-compact">
           {phases.map(({ quarter, period, title, icon, status, items }, i) => {
             const isLeft = i % 2 === 0
             const isActive = status === 'active'
+            const prevActive = i > 0 && phases[i - 1].status === 'active'
 
-            return (
+            const cardContent = (
               <motion.div
-                key={quarter}
-                initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative flex items-start mb-12 md:mb-16 ${
-                  isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
               >
-                {/* Node on the line */}
-                <div className="absolute left-6 md:left-1/2 -translate-x-1/2 z-10">
-                  <div
-                    className={`w-12 h-12 rounded-full flex items-center justify-center text-lg border-2 shadow-sm ${
-                      isActive
-                        ? 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
-                        : 'bg-base-100 border-base-300'
-                    }`}
-                  >
-                    {icon}
-                  </div>
-                </div>
-
-                {/* Card */}
-                <div className={`ml-16 md:ml-0 md:w-[calc(50%-56px)] ${isLeft ? 'md:pr-0' : 'md:pl-0'}`}>
-                  <div
-                    className={`p-6 rounded-2xl border transition-all ${
-                      isActive
-                        ? 'bg-base-100 border-primary/30 shadow-md'
-                        : 'bg-base-100 border-base-300 shadow-sm'
-                    }`}
-                  >
-                    {isActive && (
-                      <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-primary to-secondary rounded-t-2xl" />
-                    )}
-
+                <div
+                  className={`card border transition-all ${
+                    isActive
+                      ? 'bg-base-100 border-primary/30 shadow-md'
+                      : 'bg-base-100 border-base-300 shadow-sm'
+                  }`}
+                >
+                  <div className="card-body p-6">
                     {/* Quarter badge */}
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between mb-1">
                       <span
-                        className={`text-[0.65rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full ${
+                        className={`badge badge-sm ${
                           isActive
-                            ? 'bg-primary/10 text-primary'
-                            : 'bg-base-200 text-base-content/70'
+                            ? 'badge-primary'
+                            : 'badge-ghost'
                         }`}
                       >
                         {quarter} {isActive && '• Activa'}
@@ -191,7 +167,7 @@ export default function Roadmap() {
                       <span className="text-[0.6rem] text-base-content/70">{period}</span>
                     </div>
 
-                    <h3 className="text-base font-bold mb-3">{title}</h3>
+                    <h3 className="card-title text-base">{title}</h3>
 
                     <ul className="space-y-2">
                       {items.map((item) => (
@@ -212,8 +188,40 @@ export default function Roadmap() {
                 </div>
               </motion.div>
             )
+
+            return (
+              <li key={quarter}>
+                {i > 0 && <hr className={prevActive || isActive ? 'bg-primary' : ''} />}
+
+                {isLeft && (
+                  <div className="timeline-start mb-10 md:text-end">
+                    {cardContent}
+                  </div>
+                )}
+
+                <div className="timeline-middle">
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center text-lg border-2 shadow-sm ${
+                      isActive
+                        ? 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
+                        : 'bg-base-100 border-base-300'
+                    }`}
+                  >
+                    {icon}
+                  </div>
+                </div>
+
+                {!isLeft && (
+                  <div className="timeline-end mb-10">
+                    {cardContent}
+                  </div>
+                )}
+
+                {i < phases.length - 1 && <hr className={isActive ? 'bg-primary' : ''} />}
+              </li>
+            )
           })}
-        </div>
+        </ul>
 
         {/* Bottom note */}
         <motion.div
