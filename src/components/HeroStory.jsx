@@ -39,7 +39,7 @@ export default function HeroStory() {
         aria-hidden="true"
       >
         <motion.span
-          className="text-[clamp(14rem,28vw,22rem)] font-black tracking-tighter whitespace-nowrap"
+          className="text-[clamp(5rem,28vw,22rem)] font-black tracking-tighter whitespace-nowrap"
           style={{
             color: 'transparent',
             WebkitTextStroke: '1.5px oklch(0.68 0.12 265 / 0.08)',
@@ -60,7 +60,7 @@ export default function HeroStory() {
           style={{ background: 'radial-gradient(circle, oklch(0.68 0.12 265 / 0.06) 0%, oklch(0.72 0.10 290 / 0.03) 50%, transparent 70%)' }} />
       </motion.div>
 
-      <motion.div style={{ y: textY, opacity, scale }} className="relative z-10 max-w-4xl mx-auto px-8">
+      <motion.div style={{ y: textY, opacity, scale }} className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8">
         <div className="mb-8">
           <span className="inline-flex items-center gap-2 text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-4 py-1.5 uppercase tracking-widest">
             {t('hero.badge')}

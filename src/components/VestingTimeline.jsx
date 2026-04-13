@@ -31,7 +31,7 @@ export default function VestingTimeline() {
   }))
 
   return (
-    <section className="py-28 relative overflow-hidden">
+    <section className="py-16 md:py-28 relative overflow-hidden">
       {/* Parallax decorative orb */}
       <motion.div
         style={{ y: decorY }}
@@ -40,7 +40,7 @@ export default function VestingTimeline() {
         <div className="w-full h-full rounded-full" style={{ background: 'radial-gradient(circle, oklch(0.76 0.10 170 / 0.03), transparent 70%)', filter: 'blur(80px)' }} />
       </motion.div>
 
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -71,8 +71,8 @@ export default function VestingTimeline() {
               >
                 <div
                   className={`card border ${isLocked
-                      ? 'bg-base-200 border-base-300'
-                      : 'bg-base-200 border-primary/40'
+                    ? 'bg-base-200 border-base-300'
+                    : 'bg-base-200 border-primary/40'
                     }`}
                 >
                   <div className="card-body p-5">
@@ -118,8 +118,8 @@ export default function VestingTimeline() {
                 <div className="timeline-middle">
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 ${isLocked
-                        ? 'bg-base-200 border-base-300 text-base-content/70'
-                        : 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
+                      ? 'bg-base-200 border-base-300 text-base-content/70'
+                      : 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
                       }`}
                   >
                     {isLocked ? <FontAwesomeIcon icon={faLock} className="text-base-content/40" /> : <FontAwesomeIcon icon={faCircleCheck} />}

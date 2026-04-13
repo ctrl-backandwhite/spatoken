@@ -2,10 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useTranslation } from 'react-i18next'
 import LanguageSwitcher from './LanguageSwitcher'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar() {
   const navRef = useRef(null)
   const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const { t } = useTranslation()
 
   useEffect(() => {
@@ -33,7 +36,7 @@ export default function Navbar() {
           : 'py-5'
         }`}
     >
-      <div className="navbar max-w-7xl mx-auto px-8">
+      <div className="navbar max-w-7xl mx-auto px-4 md:px-8">
         <div className="navbar-start">
           <a href="#hero" className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
@@ -59,12 +62,41 @@ export default function Navbar() {
           <LanguageSwitcher />
           <a
             href="#cta"
-            className="btn btn-primary btn-sm text-sm font-semibold rounded-lg"
+            className="btn btn-primary btn-sm text-sm font-semibold rounded-lg hidden md:inline-flex"
+          >
+            {t('navbar.buyToken')}
+          </a>
+          <button
+            className="md:hidden btn btn-ghost btn-sm px-2"
+            onClick={() => setMenuOpen(m => !m)}
+            aria-label="Menu"
+          >
+            <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} className="text-base" />
+          </button>
+        </div>
+      </div>
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-base-100/95 backdrop-blur-xl border-t border-base-300 px-4 py-3 flex flex-col gap-1">
+          {navLinks.map(({ key, href }) => (
+            <a
+              key={key}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="text-sm text-base-content/70 hover:text-primary px-3 py-2.5 rounded-lg hover:bg-primary/10 transition-all"
+            >
+              {t(`navbar.${key}`)}
+            </a>
+          ))}
+          <a
+            href="#cta"
+            onClick={() => setMenuOpen(false)}
+            className="btn btn-primary btn-sm text-sm font-semibold rounded-lg mt-2"
           >
             {t('navbar.buyToken')}
           </a>
         </div>
-      </div>
+      )}
     </nav>
   )
 }

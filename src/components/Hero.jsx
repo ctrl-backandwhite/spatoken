@@ -54,7 +54,7 @@ export default function Hero() {
           </a>
         </div>
 
-        <div ref={statsRef} className="grid grid-cols-4 gap-6 mt-20 max-w-[700px] mx-auto">
+        <div ref={statsRef} className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-14 sm:mt-20 max-w-[700px] mx-auto">
           {stats.map(({ value, label }) => (
             <div key={label} className="text-center">
               <div className="text-3xl font-extrabold font-mono">

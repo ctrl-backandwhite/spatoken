@@ -25,7 +25,7 @@ export default function CallToAction() {
   ]
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-20 md:py-32 relative overflow-hidden">
       {/* Parallax background glow */}
       <motion.div
         style={{ y: glowY, scale: glowScale }}
@@ -35,13 +35,13 @@ export default function CallToAction() {
           style={{ background: 'radial-gradient(circle, oklch(0.68 0.12 265 / 0.05) 0%, oklch(0.72 0.10 290 / 0.025) 50%, transparent 70%)' }} />
       </motion.div>
 
-      <div className="max-w-3xl mx-auto px-8 text-center relative z-10" ref={ref}>
+      <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl font-bold tracking-tight mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6 leading-tight">
             {t('cta.title')}
             <br />
             <span className="gradient-text">{t('cta.titleHighlight')}</span>?

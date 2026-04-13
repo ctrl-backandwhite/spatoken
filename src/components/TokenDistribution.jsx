@@ -33,7 +33,7 @@ export default function TokenDistribution() {
   const decorY = useTransform(scrollYProgress, [0, 1], [0, -110])
 
   return (
-    <section className="py-28 relative overflow-hidden">
+    <section className="py-16 md:py-28 relative overflow-hidden">
       {/* Parallax decorative orb */}
       <motion.div
         style={{ y: decorY }}
@@ -42,7 +42,7 @@ export default function TokenDistribution() {
         <div className="w-full h-full rounded-full" style={{ background: 'radial-gradient(circle, oklch(0.68 0.12 265 / 0.03), transparent 70%)', filter: 'blur(80px)' }} />
       </motion.div>
 
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

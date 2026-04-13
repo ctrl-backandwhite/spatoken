@@ -20,7 +20,7 @@ const mechanicsData = [
 function Bar({ category, pct, color }) {
   return (
     <div className="fade-in flex items-center gap-4 mb-3.5">
-      <span className="w-36 text-sm text-base-content/70 shrink-0">{category}</span>
+      <span className="w-24 sm:w-36 text-sm text-base-content/70 shrink-0">{category}</span>
       <div className="flex-1 h-7 bg-base-300 rounded-md overflow-hidden relative">
         <div className="h-full rounded-md transition-[width] duration-[1.2s] ease-out" style={{ width: `${pct}%`, background: color }} />
         <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs font-bold font-mono">{pct}%</span>
@@ -32,7 +32,7 @@ function Bar({ category, pct, color }) {
 export default function Tokenomics() {
   const { t } = useTranslation()
   return (
-    <section id="tokenomics" className="bg-base-100 py-24">
+    <section id="tokenomics" className="bg-base-100 py-14 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="fade-in text-4xl mb-3 text-center">
           <span className="gradient-text">{t('tokenomics.heading')}</span>
@@ -41,7 +41,7 @@ export default function Tokenomics() {
           {t('tokenomics.description')}
         </p>
 
-        <div className="grid grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Distribution chart */}
           <div>
             <h3 className="fade-in text-base mb-5 text-base-content/70">{t('tokenomics.distributionTitle')}</h3>

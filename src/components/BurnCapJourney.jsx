@@ -40,8 +40,8 @@ export default function BurnCapJourney() {
   }
 
   return (
-    <section className="py-28 bg-base-100 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+    <section className="py-16 md:py-28 bg-base-100 relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -62,7 +62,7 @@ export default function BurnCapJourney() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="card bg-base-100 shadow-sm border border-base-300 p-8 max-w-3xl mx-auto"
+          className="card bg-base-100 shadow-sm border border-base-300 p-4 sm:p-8 max-w-3xl mx-auto"
         >
           {/* Visual meter */}
           <div className="mb-6">
@@ -91,7 +91,7 @@ export default function BurnCapJourney() {
           </div>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
             <div className="bg-base-200 border border-base-300 rounded-xl p-4 text-center">
               <div className="text-xs text-base-content/70 mb-1">{t('burnCap.burnedLabel')}</div>
               <div className="text-lg font-bold font-mono text-error">

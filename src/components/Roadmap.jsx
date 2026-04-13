@@ -36,8 +36,8 @@ export default function Roadmap() {
   const headerY = useTransform(scrollYProgress, [0, 1], [50, -30])
 
   return (
-    <section id="roadmap" className="py-28 bg-base-100 relative overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+    <section id="roadmap" className="py-16 md:py-28 bg-base-100 relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

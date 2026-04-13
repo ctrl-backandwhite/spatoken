@@ -51,7 +51,7 @@ export default function DexDemo() {
       ]
 
   return (
-    <section className="py-28 bg-base-100 relative overflow-hidden">
+    <section className="py-16 md:py-28 bg-base-100 relative overflow-hidden">
       {/* Parallax decorative orb */}
       <motion.div
         style={{ y: decorY }}
@@ -60,7 +60,7 @@ export default function DexDemo() {
         <div className="w-full h-full rounded-full" style={{ background: 'radial-gradient(circle, oklch(0.72 0.10 290 / 0.04), transparent 70%)', filter: 'blur(80px)' }} />
       </motion.div>
 
-      <div className="max-w-5xl mx-auto px-6" ref={ref}>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -83,7 +83,7 @@ export default function DexDemo() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="card bg-base-100 shadow-sm border border-base-300 p-8 max-w-2xl mx-auto"
+          className="card bg-base-100 shadow-sm border border-base-300 p-4 sm:p-8 max-w-2xl mx-auto"
         >
           {/* Buy / Sell toggle */}
           <div className="flex gap-2 mb-6 bg-base-200 rounded-xl p-1">

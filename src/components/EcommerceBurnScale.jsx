@@ -205,8 +205,8 @@ export default function EcommerceBurnScale() {
   const allVisible = activeIndex >= totalEntries - 1
 
   return (
-    <section className="py-28 relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6" ref={ref}>
+    <section className="py-16 md:py-28 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

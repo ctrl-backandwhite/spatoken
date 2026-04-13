@@ -15,7 +15,7 @@ export default function Features() {
   ]
 
   return (
-    <section id="features" className="py-24">
+    <section id="features" className="py-14 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="fade-in text-4xl mb-3 text-center">
           <span className="gradient-text">{t('features.heading')}</span>
@@ -24,7 +24,7 @@ export default function Features() {
           {t('features.subheading')}
         </p>
 
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {features.map(({ key, icon, gradient }) => (
             <div key={key}
               className={`card fade-in bg-gradient-to-br ${gradient} border border-base-300 hover:-translate-y-1 hover:border-primary transition-all cursor-default`}>

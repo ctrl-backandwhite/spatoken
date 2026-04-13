@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <div className="bg-neutral text-neutral-content">
-      <footer className="footer sm:footer-horizontal max-w-7xl mx-auto px-8 py-16">
+      <footer className="footer sm:footer-horizontal max-w-7xl mx-auto px-4 md:px-8 py-10 md:py-16">
         {/* Brand */}
         <aside>
           <div className="flex items-center gap-2.5 mb-4">
@@ -53,7 +53,7 @@ export default function Footer() {
       </footer>
 
       {/* Bottom bar */}
-      <footer className="footer sm:footer-horizontal max-w-7xl mx-auto px-8 py-6 border-t border-neutral-content/10">
+      <footer className="footer sm:footer-horizontal max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6 border-t border-neutral-content/10">
         <aside>
           <p className="text-xs text-neutral-content/40">{t('footer.copyright')}</p>
         </aside>
