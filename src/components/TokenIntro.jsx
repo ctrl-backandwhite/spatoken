@@ -85,7 +85,7 @@ export default function TokenIntro() {
         >
           <h3 className="text-lg font-bold mb-6 text-center">{t('tokenIntro.howItWorks')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {steps.map(({ step, icon, titleKey, descKey }) => (
+            {steps.map(({ step, icon, iconClass, titleKey, descKey }) => (
               <div key={step} className="relative p-5 rounded-xl bg-base-200 border border-base-300">
                 <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-[0.65rem] font-bold text-white">
                   {step}
