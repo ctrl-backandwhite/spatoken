@@ -87,23 +87,23 @@
     "burnRateMax": "10% (maximum)",
     "simulateBtn": "Simulate Transfer",
     "resultSent": "You send",
-    "resultBurned": "🔥 Burned",
-    "resultReceived": "✅ Received",
+    "resultBurned": "Burned",
+    "resultReceived": "Received",
     "supplyImpact": "With this transfer, the total supply was reduced by <strong>{{count}} tokens</strong> — forever. No one can recover them.",
-    "note": "💡 The current rate is 1% but the owner can adjust it between 1% and 10%. The global cap is 500 billion burned tokens (50% of supply). After that, transfers continue without burning and the collected funds are used to distribute tokens to holders."
+    "note": "The current rate is 1% but the owner can adjust it between 1% and 10%. The global cap is 500 billion burned tokens (50% of supply). After that, transfers continue without burning and the collected funds are used to distribute tokens to holders."
   },
   "dex": {
     "badge": "Chapter 3",
     "title": "Smart <gradient>buying & selling</gradient>",
     "description": "When you buy or sell NX036 on a DEX like PancakeSwap, <strong>fixed and immutable fees</strong> apply that fund the project's development. <strong class='text-success'>Tokens are burned</strong> in these operations. See exactly where each token goes:",
-    "tabBuy": "🟢 Buy",
-    "tabSell": "🔴 Sell",
+    "tabBuy": "Buy",
+    "tabSell": "Sell",
     "amountLabel": "Amount",
     "totalFees": "Total fees: {{pct}}%",
     "burnPerTrade": "1% burn on each trade",
     "youReceive": "You receive: ~{{pct}}%",
-    "simulateBuyBtn": "💱 Simulate Buy",
-    "simulateSellBtn": "💱 Simulate Sell",
+    "simulateBuyBtn": "Simulate Buy",
+    "simulateSellBtn": "Simulate Sell",
     "steps": {
       "buyPancake": "Buy on PancakeSwap",
       "devFee": "Development Fee (2.5%)",
@@ -122,8 +122,8 @@
     "description": "Our e-commerce platform integrates the token directly. Each purchase you make <strong class='text-rose-300'>immediately burns tokens from the pool</strong>. The customer receives redeemable <strong class='text-accent'>loyalty points</strong>. The higher the tier, the more tokens will be burned (This is an example to illustrate).",
     "tierLabel": "Your Tier",
     "tokensPerDollar": "Tokens per $1",
-    "shopTitle": "🛒 NX036 Store",
-    "resultTitle": "📊 Result",
+    "shopTitle": "NX036 Store",
+    "resultTitle": "Result",
     "selectProduct": "Select a product to see what happens with the tokens",
     "willBurn": "Will be burned",
     "tierInfo": "Tier {{name}} · {{multiplier}}x",
@@ -195,13 +195,13 @@
     "burnedLabel": "Burned",
     "circulatingLabel": "In circulation",
     "statusLabel": "Status",
-    "statusBuyback": "🔄 Buyback",
+    "statusBuyback": "Buyback",
     "statusBurning": "Burning",
     "sliderStart": "0% burned",
     "sliderHint": "Drag to explore →",
-    "animateBtn": "▶ Animate full journey",
+    "animateBtn": "Animate full journey",
     "burnPhase": {
-      "title": "🔥 Burn Phase (0-50%)",
+      "title": "Burn Phase (0-50%)",
       "items": [
         "Each transfer burns tokens",
         "E-commerce purchases burn from the pool",
@@ -210,7 +210,7 @@
       ]
     },
     "buybackPhase": {
-      "title": "🔄 Buyback Phase (post 50%)",
+      "title": "Buyback Phase (post 50%)",
       "items": [
         "No more tokens are burned",
         "DEX fees remain active",

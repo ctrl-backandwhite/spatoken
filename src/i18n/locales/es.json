@@ -87,23 +87,23 @@
     "burnRateMax": "10% (máximo)",
     "simulateBtn": "Simular Transferencia",
     "resultSent": "Envías",
-    "resultBurned": "🔥 Quemados",
-    "resultReceived": "✅ Recibidos",
+    "resultBurned": "Quemados",
+    "resultReceived": "Recibidos",
     "supplyImpact": "Con esta transferencia, el supply total se redujo en <strong>{{count}} tokens</strong> — para siempre. Nadie los puede recuperar.",
-    "note": "💡 La tasa actual es 1% pero el owner puede ajustarla entre 1% y 10%. El tope global es 500 mil millones de tokens quemados (50% del supply). Después de eso, las transferencias siguen sin quema y el dinero recolectado se usa para distribuir tokens a los holders."
+    "note": "La tasa actual es 1% pero el owner puede ajustarla entre 1% y 10%. El tope global es 500 mil millones de tokens quemados (50% del supply). Después de eso, las transferencias siguen sin quema y el dinero recolectado se usa para distribuir tokens a los holders."
   },
   "dex": {
     "badge": "Capítulo 3",
     "title": "Compra y venta <gradient>inteligente</gradient>",
     "description": "Cuando compras o vendes NX036 en un DEX como PancakeSwap, se aplican <strong>comisiones fijas e inmutables</strong> que financian el desarrollo del proyecto. <strong class='text-success'>Se queman tokens</strong> en estas operaciones. Mira exactamente a dónde va cada token:",
-    "tabBuy": "🟢 Compra",
-    "tabSell": "🔴 Venta",
+    "tabBuy": "Compra",
+    "tabSell": "Venta",
     "amountLabel": "Cantidad",
     "totalFees": "Total comisiones: {{pct}}%",
     "burnPerTrade": "1% quema en cada trade",
     "youReceive": "Recibes: ~{{pct}}%",
-    "simulateBuyBtn": "💱 Simular Compra",
-    "simulateSellBtn": "💱 Simular Venta",
+    "simulateBuyBtn": "Simular Compra",
+    "simulateSellBtn": "Simular Venta",
     "steps": {
       "buyPancake": "Compras en PancakeSwap",
       "devFee": "Comisión Desarrollo (2.5%)",
@@ -122,8 +122,8 @@
     "description": "Nuestra plataforma de e-commerce integra el token directamente. Cada compra que realizas <strong class='text-rose-300'>quema tokens del pool inmediatamente</strong>. El cliente recibe <strong class='text-accent'>puntos de lealtad</strong> canjeables. Cuanto más alto sea su nivel, más tokens se quemarán (Esto es un ejemplo para que se entienda).",
     "tierLabel": "Tu Nivel",
     "tokensPerDollar": "Tokens por $1",
-    "shopTitle": "🛒 Tienda NX036",
-    "resultTitle": "📊 Resultado",
+    "shopTitle": "Tienda NX036",
+    "resultTitle": "Resultado",
     "selectProduct": "Selecciona un producto para ver qué pasa con los tokens",
     "willBurn": "Se quemarán",
     "tierInfo": "Nivel {{name}} · {{multiplier}}x",
@@ -195,13 +195,13 @@
     "burnedLabel": "Quemados",
     "circulatingLabel": "En circulación",
     "statusLabel": "Estado",
-    "statusBuyback": "🔄 Buyback",
+    "statusBuyback": "Buyback",
     "statusBurning": "Quemando",
     "sliderStart": "0% quemado",
     "sliderHint": "Arrastra para explorar →",
-    "animateBtn": "▶ Animar viaje completo",
+    "animateBtn": "Animar viaje completo",
     "burnPhase": {
-      "title": "🔥 Fase de Quema (0-50%)",
+      "title": "Fase de Quema (0-50%)",
       "items": [
         "Cada transferencia quema tokens",
         "Compras en e-commerce queman del pool",
@@ -210,7 +210,7 @@
       ]
     },
     "buybackPhase": {
-      "title": "🔄 Fase de Recompra (post 50%)",
+      "title": "Fase de Recompra (post 50%)",
       "items": [
         "No se queman más tokens",
         "Comisiones DEX siguen activas",
