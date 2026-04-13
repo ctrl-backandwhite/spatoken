@@ -66,9 +66,9 @@ export default function TokenDistribution() {
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex items-center gap-4 mb-4 group"
+              className="flex items-center gap-3 mb-4 group"
             >
-              <span className="w-32 text-sm text-base-content/70 shrink-0 group-hover:text-base-content transition-colors">
+              <span className="w-20 sm:w-32 text-xs sm:text-sm text-base-content/70 shrink-0 group-hover:text-base-content transition-colors">
                 {a.category ?? t('tokenomics.allocations.team')}
               </span>
               <div className="flex-1 h-9 bg-base-200 rounded-lg overflow-hidden relative border border-base-300">
@@ -86,7 +86,7 @@ export default function TokenDistribution() {
                   <span className="text-xs font-bold font-mono text-base-content">{a.pct}%</span>
                 </div>
               </div>
-              <span className="w-20 text-xs font-mono text-base-content/70 text-right shrink-0">
+              <span className="hidden sm:block sm:w-20 text-xs font-mono text-base-content/70 text-right shrink-0">
                 {((a.pct / 100) * 1_000_000_000_000).toLocaleString()}
               </span>
             </motion.div>
