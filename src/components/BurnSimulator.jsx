@@ -2,6 +2,8 @@ import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire } from '@fortawesome/free-solid-svg-icons'
 
 export default function BurnSimulator() {
   const ref = useRef(null)
@@ -117,6 +119,7 @@ export default function BurnSimulator() {
             onClick={handleSimulate}
             className="btn btn-primary w-full"
           >
+            <FontAwesomeIcon icon={faFire} />
             {t('burnSimulator.simulateBtn')}
           </motion.button>
 

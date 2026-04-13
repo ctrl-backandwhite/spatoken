@@ -2,6 +2,8 @@ import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import CountUp from 'react-countup'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire, faCartShopping, faBolt } from '@fortawesome/free-solid-svg-icons'
 
 export default function TokenIntro() {
   const ref = useRef(null)
@@ -23,9 +25,9 @@ export default function TokenIntro() {
   ]
 
   const steps = [
-    { step: '1', icon: '🔥', titleKey: 'tokenIntro.steps.burn.title', descKey: 'tokenIntro.steps.burn.desc' },
-    { step: '2', icon: '🛒', titleKey: 'tokenIntro.steps.ecommerce.title', descKey: 'tokenIntro.steps.ecommerce.desc' },
-    { step: '3', icon: '⚡', titleKey: 'tokenIntro.steps.staking.title', descKey: 'tokenIntro.steps.staking.desc' },
+    { step: '1', icon: faFire, iconClass: 'text-primary', titleKey: 'tokenIntro.steps.burn.title', descKey: 'tokenIntro.steps.burn.desc' },
+    { step: '2', icon: faCartShopping, iconClass: 'text-secondary', titleKey: 'tokenIntro.steps.ecommerce.title', descKey: 'tokenIntro.steps.ecommerce.desc' },
+    { step: '3', icon: faBolt, iconClass: 'text-accent', titleKey: 'tokenIntro.steps.staking.title', descKey: 'tokenIntro.steps.staking.desc' },
   ]
 
   return (
@@ -44,13 +46,9 @@ export default function TokenIntro() {
             <span className="gradient-text">{t('tokenIntro.title').replace(/.*<gradient>/, '').replace(/<\/gradient>.*/, '')}</span>
             {t('tokenIntro.title').split('</gradient>')[1]}
           </h2>
-          <p className="text-base-content/70 max-w-2xl mx-auto text-lg leading-relaxed">
-            {t('tokenIntro.description').split('<strong>')[0]}
-            <strong className="text-base-content">{t('tokenIntro.description').replace(/.*<strong>/, '').replace(/<\/strong>.*/, '')}</strong>
-            {t('tokenIntro.description').split('</strong>')[1].split('<strong_primary>')[0]}
-            <strong className="text-primary">{t('tokenIntro.description').replace(/.*<strong_primary>/, '').replace(/<\/strong_primary>.*/, '')}</strong>
-            {t('tokenIntro.description').split('</strong_primary>')[1]}
-          </p>
+          <p className="text-base-content/70 max-w-2xl mx-auto text-lg leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: t('tokenIntro.description') }}
+          />
         </motion.div>
 
         {/* Animated stats */}
@@ -92,7 +90,7 @@ export default function TokenIntro() {
                 <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-[0.65rem] font-bold text-white">
                   {step}
                 </div>
-                <div className="text-2xl mb-3 mt-1">{icon}</div>
+                <div className="text-2xl mb-3 mt-1"><FontAwesomeIcon icon={icon} className={iconClass} /></div>
                 <h4 className="text-sm font-bold mb-2">{t(titleKey)}</h4>
                 <p className="text-xs text-base-content/70 leading-relaxed">{t(descKey)}</p>
               </div>

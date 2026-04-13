@@ -96,8 +96,8 @@ export default function EcommerceExperience() {
                     setPurchased(false)
                   }}
                   className={`btn btn-block justify-between text-sm ${selectedTier === i
-                      ? 'btn-primary btn-outline'
-                      : 'btn-ghost'
+                    ? 'btn-primary btn-outline'
+                    : 'btn-ghost'
                     }`}
                 >
                   <span className="flex items-center gap-2">
@@ -136,8 +136,8 @@ export default function EcommerceExperience() {
                   whileTap={{ scale: 0.97 }}
                   onClick={() => handleBuy(p)}
                   className={`p-4 rounded-xl border text-left transition-all cursor-pointer ${cart?.name === p.name
-                      ? 'border-primary bg-primary/5'
-                      : 'border-base-300 bg-base-200 hover:border-base-content/50'
+                    ? 'border-primary bg-primary/5'
+                    : 'border-base-300 bg-base-200 hover:border-base-content/50'
                     }`}
                 >
                   <div className="text-3xl mb-2 text-primary/50"><FontAwesomeIcon icon={p.icon} /></div>

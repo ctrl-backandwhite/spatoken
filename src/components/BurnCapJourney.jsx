@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire } from '@fortawesome/free-solid-svg-icons'
 
 export default function BurnCapJourney() {
   const { t } = useTranslation()
@@ -109,7 +111,7 @@ export default function BurnCapJourney() {
             <div className="bg-base-200 border border-base-300 rounded-xl p-4 text-center">
               <div className="text-xs text-base-content/70 mb-1">{t('burnCap.statusLabel')}</div>
               <div className={`text-lg font-bold ${capReached ? 'text-warning' : 'text-primary'}`}>
-                {capReached ? t('burnCap.statusBuyback') : t('burnCap.statusBurning')}
+                {capReached ? t('burnCap.statusBuyback') : <><FontAwesomeIcon icon={faFire} /> {t('burnCap.statusBurning')}</>}
               </div>
             </div>
           </div>

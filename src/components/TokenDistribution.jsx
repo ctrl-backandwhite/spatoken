@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBolt, faLock, faStar } from '@fortawesome/free-solid-svg-icons'
 
 const allocationData = [
   { key: 'reserve', category: 'Reserve / Listings', pct: 25, color: '#fcd34d' },
@@ -13,9 +15,9 @@ const allocationData = [
 ]
 
 const summaryCardData = [
-  { key: 'immediate', value: '71%', icon: '⚡' },
-  { key: 'vested', value: '24%', icon: '🔒' },
-  { key: 'stakingPool', value: '5%', icon: '⭐' },
+  { key: 'immediate', value: '71%', icon: faBolt },
+  { key: 'vested', value: '24%', icon: faLock },
+  { key: 'stakingPool', value: '5%', icon: faStar },
 ]
 
 export default function TokenDistribution() {
@@ -100,7 +102,7 @@ export default function TokenDistribution() {
         >
           {summaryCardData.map(({ key, value, icon }) => (
             <div key={key} className="bg-base-100 border border-base-300 rounded-xl p-5 text-center shadow-sm">
-              <div className="text-2xl mb-2">{icon}</div>
+              <div className="text-2xl mb-2 text-primary/60"><FontAwesomeIcon icon={icon} /></div>
               <div className="text-2xl font-bold font-mono gradient-text mb-1">{value}</div>
               <div className="text-sm font-bold mb-1">{t(`tokenDistribution.summaryCards.${key}.title`)}</div>
               <p className="text-xs text-base-content/70">{t(`tokenDistribution.summaryCards.${key}.desc`)}</p>

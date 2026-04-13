@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBolt } from '@fortawesome/free-solid-svg-icons'
 
 export default function StakingDemo() {
   const { t } = useTranslation()
@@ -151,7 +153,7 @@ export default function StakingDemo() {
                 disabled={simulating}
                 className="btn btn-primary w-full mb-6"
               >
-                {simulating ? t('staking.simulatingBtn') : t('staking.simulateBtn')}
+                {simulating ? t('staking.simulatingBtn') : <><FontAwesomeIcon icon={faBolt} /> {t('staking.simulateBtn')}</>}
               </motion.button>
 
               {/* Progress */}

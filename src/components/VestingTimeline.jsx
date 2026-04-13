@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faCircleCheck, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
 
 const yearData = [
   { year: 1, released: 0, cumulative: 0 },
@@ -120,7 +122,7 @@ export default function VestingTimeline() {
                         : 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
                       }`}
                   >
-                    {isLocked ? '🔒' : '✅'}
+                    {isLocked ? <FontAwesomeIcon icon={faLock} className="text-base-content/40" /> : <FontAwesomeIcon icon={faCircleCheck} />}
                   </div>
                 </div>
 
@@ -143,7 +145,7 @@ export default function VestingTimeline() {
           transition={{ delay: 1.2 }}
           className="mt-8 max-w-2xl mx-auto bg-base-100 border border-base-300 rounded-2xl p-6 text-center shadow-sm"
         >
-          <div className="text-2xl mb-3">🛡️</div>
+          <div className="text-2xl mb-3 text-primary/50"><FontAwesomeIcon icon={faShieldHalved} /></div>
           <h4 className="text-sm font-bold mb-2">{t('vesting.trustTitle')}</h4>
           <p className="text-xs text-base-content/70 leading-relaxed"
             dangerouslySetInnerHTML={{ __html: t('vesting.trustDesc') }}

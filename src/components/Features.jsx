@@ -1,15 +1,17 @@
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBolt, faCartShopping, faLock, faShieldHalved, faChartBar, faLink } from '@fortawesome/free-solid-svg-icons'
 
 export default function Features() {
   const { t } = useTranslation()
 
   const features = [
-    { key: 'staking', icon: '⚡', gradient: 'from-primary/15 to-secondary/15' },
-    { key: 'ecommerce', icon: '🛒', gradient: 'from-accent/15 to-primary/15' },
-    { key: 'vesting', icon: '🔐', gradient: 'from-secondary/15 to-rose-300/15' },
-    { key: 'burnCap', icon: '🛡️', gradient: 'from-amber-200/20 to-orange-200/20' },
-    { key: 'buyback', icon: '📊', gradient: 'from-violet-300/15 to-pink-200/15' },
-    { key: 'bnbChain', icon: '⛓️', gradient: 'from-amber-200/20 to-accent/15' },
+    { key: 'staking', icon: faBolt, gradient: 'from-primary/15 to-secondary/15' },
+    { key: 'ecommerce', icon: faCartShopping, gradient: 'from-accent/15 to-primary/15' },
+    { key: 'vesting', icon: faLock, gradient: 'from-secondary/15 to-rose-300/15' },
+    { key: 'burnCap', icon: faShieldHalved, gradient: 'from-amber-200/20 to-orange-200/20' },
+    { key: 'buyback', icon: faChartBar, gradient: 'from-violet-300/15 to-pink-200/15' },
+    { key: 'bnbChain', icon: faLink, gradient: 'from-amber-200/20 to-accent/15' },
   ]
 
   return (
@@ -27,7 +29,7 @@ export default function Features() {
             <div key={key}
               className={`card fade-in bg-gradient-to-br ${gradient} border border-base-300 hover:-translate-y-1 hover:border-primary transition-all cursor-default`}>
               <div className="card-body p-8">
-                <div className="text-3xl">{icon}</div>
+                <div className="text-2xl text-primary/70"><FontAwesomeIcon icon={icon} /></div>
                 <h3 className="card-title text-lg">{t(`features.${key}.title`)}</h3>
                 <p className="text-sm text-base-content/70 leading-relaxed">{t(`features.${key}.desc`)}</p>
               </div>

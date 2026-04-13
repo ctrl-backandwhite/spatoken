@@ -71,8 +71,8 @@ export default function Roadmap() {
               >
                 <div
                   className={`card border transition-all ${isActive
-                      ? 'bg-base-100 border-primary/30 shadow-md'
-                      : 'bg-base-100 border-base-300 shadow-sm'
+                    ? 'bg-base-100 border-primary/30 shadow-md'
+                    : 'bg-base-100 border-base-300 shadow-sm'
                     }`}
                 >
                   <div className="card-body p-6">
@@ -80,8 +80,8 @@ export default function Roadmap() {
                     <div className="flex items-center justify-between mb-1">
                       <span
                         className={`badge badge-sm ${isActive
-                            ? 'badge-primary'
-                            : 'badge-ghost'
+                          ? 'badge-primary'
+                          : 'badge-ghost'
                           }`}
                       >
                         {quarter} {isActive && t('roadmap.active')}
@@ -123,8 +123,8 @@ export default function Roadmap() {
                 <div className="timeline-middle">
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center text-lg border-2 shadow-sm ${isActive
-                        ? 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
-                        : 'bg-base-100 border-base-300 text-base-content/50'
+                      ? 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
+                      : 'bg-base-100 border-base-300 text-base-content/50'
                       }`}
                   >
                     <FontAwesomeIcon icon={icon} />
