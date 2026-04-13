@@ -49,7 +49,7 @@
   "tokenIntro": {
     "badge": "Chapter 1",
     "title": "What is <gradient>NX036</gradient>?",
-    "description": "A token with a <strong>fixed supply</strong> that allows no more to be generated. Every time someone transfers, buys or uses the e-commerce, <strong class='text-primary'>a portion disappears forever</strong>, reducing the tokens in circulation.",
+    "description": "A token with a <strong>fixed supply</strong> that allows no more to be generated. Every time someone transfers, buys tokens or uses the e-commerce, <strong class='text-primary'>a portion disappears forever</strong>, reducing the tokens in circulation.",
     "stats": {
       "supply": "Total Supply",
       "maxBurn": "Max Burn",
@@ -79,7 +79,7 @@
   "burnSimulator": {
     "badge": "Chapter 2",
     "title": "A token that <gradient>burns</gradient>",
-    "description": "Every time you send NX036 to another person, a percentage is permanently destroyed. It goes to no wallet — it <strong>disappears from the total supply</strong>. You can simulate it:",
+    "description": "Every time you send NX036 to another person, a percentage is permanently destroyed. It goes to a locked wallet where it cannot be recovered — it <strong>disappears from the total supply</strong>. You can simulate it:",
     "tokensLabel": "Tokens to send",
     "burnRateLabel": "Burn rate:",
     "burnRateMin": "1% (current)",
@@ -113,7 +113,7 @@
       "sellPancake": "Sell on PancakeSwap",
       "buyerReceives": "Buyer receives"
     },
-    "resultNote": "Of {{amount}} tokens, <strong class=\"text-warning\">{{devFee}}</strong> are retained for development{{promoNote}}. <strong class=\"text-success\"> No tokens are burned in DEX operations.</strong> These fees are <strong class=\"text-base-content\">fixed and immutable</strong> in the contract.",
+    "resultNote": "Of {{amount}} tokens, <strong class=\"text-warning\">{{devFee}}</strong> are retained for development{{promoNote}}. <strong class=\"text-success\"> Tokens are burned in DEX operations.</strong> These fees are <strong class=\"text-base-content\">fixed and immutable</strong> in the contract.",
     "promoNote": " + <strong class=\"text-warning\">{{promoFee}}</strong> for promotion"
   },
   "ecommerce": {

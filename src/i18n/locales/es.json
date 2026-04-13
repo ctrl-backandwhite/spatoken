@@ -49,7 +49,7 @@
   "tokenIntro": {
     "badge": "Capítulo 1",
     "title": "¿Qué es <gradient>NX036</gradient>?",
-    "description": "Un token con <strong>supply fijo</strong> que no permite generar más. Cada vez que alguien transfiere, compra o usa el e-commerce, <strong class='text-primary'>una parte desaparece para siempre</strong>, reduciendo los tokens en circulación.",
+    "description": "Un token con <strong>supply fijo</strong> que no permite generar más. Cada vez que alguien transfiere, compra tokens o usa el e-commerce, <strong class='text-primary'>una parte desaparece para siempre</strong>, reduciendo los tokens en circulación.",
     "stats": {
       "supply": "Supply Total",
       "maxBurn": "Quema Máxima",
@@ -79,7 +79,7 @@
   "burnSimulator": {
     "badge": "Capítulo 2",
     "title": "Un token que <gradient>se quema</gradient>",
-    "description": "Cada vez que envías NX036 a otra persona, un porcentaje se destruye permanentemente. No va a ninguna wallet — <strong>desaparece del supply total</strong>. Puedes simularlo:",
+    "description": "Cada vez que envías NX036 a otra persona, un porcentaje se destruye permanentemente. Va a una wallet bloqueada donde no se pueden recuperar — <strong>desaparece del supply total</strong>. Puedes simularlo:",
     "tokensLabel": "Tokens a enviar",
     "burnRateLabel": "Tasa de quema:",
     "burnRateMin": "1% (actual)",
@@ -113,7 +113,7 @@
       "sellPancake": "Vendes en PancakeSwap",
       "buyerReceives": "El comprador recibe"
     },
-    "resultNote": "De {{amount}} tokens, se retienen <strong class=\"text-warning\">{{devFee}}</strong> para desarrollo{{promoNote}}. <strong class=\"text-success\"> No se queman tokens en operaciones DEX.</strong> Estas comisiones son <strong class=\"text-base-content\">fijas e inmutables</strong> en el contrato.",
+    "resultNote": "De {{amount}} tokens, se retienen <strong class=\"text-warning\">{{devFee}}</strong> para desarrollo{{promoNote}}. <strong class=\"text-success\"> Se queman tokens en operaciones DEX.</strong> Estas comisiones son <strong class=\"text-base-content\">fijas e inmutables</strong> en el contrato.",
     "promoNote": " + <strong class=\"text-warning\">{{promoFee}}</strong> para promoción"
   },
   "ecommerce": {

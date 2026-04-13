@@ -49,7 +49,7 @@
   "tokenIntro": {
     "badge": "Capítulo 1",
     "title": "O que é <gradient>NX036</gradient>?",
-    "description": "Um token com <strong>supply fixo</strong> que não permite gerar mais. Toda vez que alguém transfere, compra ou usa o e-commerce, <strong class='text-primary'>uma parte desaparece para sempre</strong>, reduzindo os tokens em circulação.",
+    "description": "Um token com <strong>supply fixo</strong> que não permite gerar mais. Toda vez que alguém transfere, compra tokens ou usa o e-commerce, <strong class='text-primary'>uma parte desaparece para sempre</strong>, reduzindo os tokens em circulação.",
     "stats": {
       "supply": "Supply Total",
       "maxBurn": "Queima Máxima",
@@ -79,7 +79,7 @@
   "burnSimulator": {
     "badge": "Capítulo 2",
     "title": "Um token que <gradient>queima</gradient>",
-    "description": "Toda vez que você envia NX036 para outra pessoa, uma porcentagem é destruída permanentemente. Não vai para nenhuma wallet — <strong>desaparece do supply total</strong>. Você pode simular:",
+    "description": "Toda vez que você envia NX036 para outra pessoa, uma porcentagem é destruída permanentemente. Vai para uma wallet bloqueada onde não pode ser recuperado — <strong>desaparece do supply total</strong>. Você pode simular:",
     "tokensLabel": "Tokens a enviar",
     "burnRateLabel": "Taxa de queima:",
     "burnRateMin": "1% (atual)",
@@ -113,7 +113,7 @@
       "sellPancake": "Vende no PancakeSwap",
       "buyerReceives": "O comprador recebe"
     },
-    "resultNote": "De {{amount}} tokens, <strong class=\"text-warning\">{{devFee}}</strong> são retidos para desenvolvimento{{promoNote}}. <strong class=\"text-success\"> Nenhum token é queimado em operações DEX.</strong> Essas taxas são <strong class=\"text-base-content\">fixas e imutáveis</strong> no contrato.",
+    "resultNote": "De {{amount}} tokens, <strong class=\"text-warning\">{{devFee}}</strong> são retidos para desenvolvimento{{promoNote}}. <strong class=\"text-success\"> Tokens são queimados em operações DEX.</strong> Essas taxas são <strong class=\"text-base-content\">fixas e imutáveis</strong> no contrato.",
     "promoNote": " + <strong class=\"text-warning\">{{promoFee}}</strong> para promoção"
   },
   "ecommerce": {
