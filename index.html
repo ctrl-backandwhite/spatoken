@@ -114,6 +114,13 @@
     <div class="splash-text">Cargando NX036<span class="splash-dots"></span></div>
   </div>
   <div id="root"></div>
+  <script>
+    // Safety net: if React doesn't dismiss the splash in 5s, force-hide it
+    setTimeout(function () {
+      var s = document.getElementById('splash');
+      if (s) { s.classList.add('hide'); setTimeout(function () { s.remove(); }, 700); }
+    }, 5000);
+  </script>
   <script type="module" src="/src/main.jsx"></script>
 </body>
 
