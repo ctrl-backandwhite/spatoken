@@ -2,11 +2,13 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import CountUp from 'react-countup'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStore, faBagShopping, faHandshake, faCartShopping, faShirt, faTag, faBox, faGlobe, faFire } from '@fortawesome/free-solid-svg-icons'
 
 const platforms = [
   {
     name: 'Etsy',
-    icon: '🧶',
+    icon: faStore,
     dailyTx: 2_000_000,
     avgOrder: 100,
     color: 'oklch(0.80 0.08 30)',
@@ -14,7 +16,7 @@ const platforms = [
   },
   {
     name: 'eBay',
-    icon: '🛍️',
+    icon: faBagShopping,
     dailyTx: 5_000_000,
     avgOrder: 100,
     color: 'oklch(0.78 0.08 260)',
@@ -22,7 +24,7 @@ const platforms = [
   },
   {
     name: 'MercadoLibre',
-    icon: '🤝',
+    icon: faHandshake,
     dailyTx: 12_000_000,
     avgOrder: 100,
     color: 'oklch(0.82 0.08 90)',
@@ -30,7 +32,7 @@ const platforms = [
   },
   {
     name: 'Shopify (merchants)',
-    icon: '🛒',
+    icon: faCartShopping,
     dailyTx: 18_000_000,
     avgOrder: 100,
     color: 'oklch(0.80 0.08 150)',
@@ -38,7 +40,7 @@ const platforms = [
   },
   {
     name: 'Shein',
-    icon: '👗',
+    icon: faShirt,
     dailyTx: 30_000_000,
     avgOrder: 100,
     color: 'oklch(0.78 0.07 0)',
@@ -46,7 +48,7 @@ const platforms = [
   },
   {
     name: 'Temu',
-    icon: '🏷️',
+    icon: faTag,
     dailyTx: 40_000_000,
     avgOrder: 100,
     color: 'oklch(0.80 0.08 35)',
@@ -54,7 +56,7 @@ const platforms = [
   },
   {
     name: 'Amazon',
-    icon: '📦',
+    icon: faBox,
     dailyTx: 50_000_000,
     avgOrder: 100,
     color: 'oklch(0.82 0.08 60)',
@@ -62,7 +64,7 @@ const platforms = [
   },
   {
     name: 'Alibaba Group',
-    icon: '🌏',
+    icon: faGlobe,
     dailyTx: 90_000_000,
     avgOrder: 100,
     color: 'oklch(0.78 0.07 25)',
@@ -106,7 +108,7 @@ function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
       <div className="flex items-center gap-3">
         <div className={`${highlight ? 'w-10 h-10' : 'w-8 h-8'} rounded-lg flex items-center justify-center ${highlight ? 'text-xl' : 'text-base'} shrink-0 ${highlight ? 'ring-2 ring-primary/30' : ''}`}
           style={{ background: platform.accent }}>
-          {platform.icon}
+          <FontAwesomeIcon icon={platform.icon} style={{ color: platform.color }} />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline justify-between mb-1">
@@ -153,7 +155,7 @@ function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
                   className="absolute inset-0 flex items-center justify-end pr-3"
                 >
                   <span className="text-xs font-bold font-mono flex items-center gap-1 text-white">
-                    🔥 <CountUp end={burnDaily} duration={2} separator="," suffix=" NX036" />
+                    <FontAwesomeIcon icon={faFire} /> <CountUp end={burnDaily} duration={2} separator="," suffix=" NX036" />
                   </span>
                 </motion.div>
               )}
@@ -190,7 +192,7 @@ export default function EcommerceBurnScale() {
 
   const nx036Platform = {
     name: 'NX036',
-    icon: '🔥',
+    icon: faFire,
     dailyTx: avgDailyTx,
     avgOrder: 100,
     color: 'oklch(0.68 0.12 265)',

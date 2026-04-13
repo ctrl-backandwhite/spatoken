@@ -1,6 +1,8 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock, faLink, faFire, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
 
 export default function CallToAction() {
   const ref = useRef(null)
@@ -16,10 +18,10 @@ export default function CallToAction() {
   const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1.1, 0.9])
 
   const trustItems = [
-    { icon: '🔐', key: 'audited' },
-    { icon: '⛓️', key: 'bnbChain' },
-    { icon: '🔒', key: 'teamLocked' },
-    { icon: '🔥', key: 'maxBurn' },
+    { icon: faShieldHalved, key: 'audited' },
+    { icon: faLink, key: 'bnbChain' },
+    { icon: faLock, key: 'teamLocked' },
+    { icon: faFire, key: 'maxBurn' },
   ]
 
   return (
@@ -76,7 +78,7 @@ export default function CallToAction() {
           >
             {trustItems.map(({ icon, key }) => (
               <div key={key} className="flex items-center gap-2 text-sm text-base-content/70">
-                <span>{icon}</span>
+                <FontAwesomeIcon icon={icon} className="text-primary/60" />
                 <span>{t(`cta.trust.${key}`)}</span>
               </div>
             ))}

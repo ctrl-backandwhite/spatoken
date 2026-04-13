@@ -126,7 +126,7 @@
     "resultTitle": "📊 Result",
     "selectProduct": "Select a product to see what happens with the tokens",
     "willBurn": "Will be burned",
-    "tierInfo": "{{emoji}} Tier {{name}} ({{multiplier}}x)",
+    "tierInfo": "Tier {{name}} · {{multiplier}}x",
     "clickToBuy": "Click \"Buy\" to see the animation",
     "buyBtn": "Buy {{name}}",
     "resultSteps": {

@@ -1,15 +1,17 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWrench, faRocket, faCartShopping, faMobileScreen, faLandmark, faGlobe, faGem, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
 const phaseStaticData = [
-  { quarter: 'Q4 2026', key: 'q42026', icon: '🔧', status: 'active' },
-  { quarter: 'Q1 2027', key: 'q12027', icon: '🚀', status: 'upcoming' },
-  { quarter: 'Q2 2027', key: 'q22027', icon: '🛒', status: 'upcoming' },
-  { quarter: 'Q3 2027', key: 'q32027', icon: '📱', status: 'upcoming' },
-  { quarter: 'Q4 2027', key: 'q42027', icon: '🏛️', status: 'upcoming' },
-  { quarter: 'Q1 2028', key: 'q12028', icon: '🌐', status: 'upcoming' },
-  { quarter: 'Q2 2028', key: 'q22028', icon: '💎', status: 'upcoming' },
+  { quarter: 'Q4 2026', key: 'q42026', icon: faWrench, status: 'active' },
+  { quarter: 'Q1 2027', key: 'q12027', icon: faRocket, status: 'upcoming' },
+  { quarter: 'Q2 2027', key: 'q22027', icon: faCartShopping, status: 'upcoming' },
+  { quarter: 'Q3 2027', key: 'q32027', icon: faMobileScreen, status: 'upcoming' },
+  { quarter: 'Q4 2027', key: 'q42027', icon: faLandmark, status: 'upcoming' },
+  { quarter: 'Q1 2028', key: 'q12028', icon: faGlobe, status: 'upcoming' },
+  { quarter: 'Q2 2028', key: 'q22028', icon: faGem, status: 'upcoming' },
 ]
 
 export default function Roadmap() {
@@ -122,10 +124,10 @@ export default function Roadmap() {
                   <div
                     className={`w-12 h-12 rounded-full flex items-center justify-center text-lg border-2 shadow-sm ${isActive
                         ? 'bg-gradient-to-br from-primary to-secondary border-primary text-white'
-                        : 'bg-base-100 border-base-300'
+                        : 'bg-base-100 border-base-300 text-base-content/50'
                       }`}
                   >
-                    {icon}
+                    <FontAwesomeIcon icon={icon} />
                   </div>
                 </div>
 
@@ -148,7 +150,7 @@ export default function Roadmap() {
           transition={{ delay: 1.2 }}
           className="mt-4 max-w-2xl mx-auto bg-base-100 border border-base-300 rounded-2xl p-6 text-center shadow-sm"
         >
-          <div className="text-2xl mb-3">🗓️</div>
+          <div className="text-2xl mb-3 text-primary/50"><FontAwesomeIcon icon={faCalendarDays} /></div>
           <h4 className="text-sm font-bold mb-2">{t('roadmap.updateTitle')}</h4>
           <p className="text-xs text-base-content/70 leading-relaxed">
             {t('roadmap.updateDesc')}

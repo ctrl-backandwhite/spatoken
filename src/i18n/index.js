@@ -18,9 +18,8 @@ i18n
       'pt-PT': { translation: ptPT },
     },
     fallbackLng: 'en',
-    lng: 'en',
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['localStorage'],
       caches: ['localStorage'],
       lookupLocalStorage: 'nx036-lang',
     },

@@ -2,23 +2,25 @@ import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMedal, faTrophy, faGem, faCrown, faHeadphones, faClock, faKeyboard, faDesktop, faCircleCheck, faFire, faArrowTrendDown, faStar } from '@fortawesome/free-solid-svg-icons'
 
 const tiers = [
-  { name: 'Basic', multiplier: 1, color: '#b8b8d0', emoji: '🥉' },
-  { name: 'Silver', multiplier: 2, color: '#d4d4e0', emoji: '🥈' },
-  { name: 'Gold', multiplier: 3, color: '#fde68a', emoji: '🥇' },
-  { name: 'Platinum', multiplier: 4, color: '#e8e7f0', emoji: '💎' },
-  { name: 'Diamond', multiplier: 5, color: '#bae6fd', emoji: '👑' },
+  { name: 'Basic', multiplier: 1, color: '#b8b8d0', icon: faMedal },
+  { name: 'Silver', multiplier: 2, color: '#94a3b8', icon: faMedal },
+  { name: 'Gold', multiplier: 3, color: '#d97706', icon: faTrophy },
+  { name: 'Platinum', multiplier: 4, color: '#8b5cf6', icon: faGem },
+  { name: 'Diamond', multiplier: 5, color: '#0ea5e9', icon: faCrown },
 ]
 
 export default function EcommerceExperience() {
   const { t } = useTranslation()
 
   const products = [
-    { key: 'bluetooth', name: t('ecommerce.products.bluetooth'), price: 3500, img: '🎧' },
-    { key: 'smartwatch', name: t('ecommerce.products.smartwatch'), price: 8900, img: '⌚' },
-    { key: 'keyboard', name: t('ecommerce.products.keyboard'), price: 12500, img: '⌨️' },
-    { key: 'monitor', name: t('ecommerce.products.monitor'), price: 45000, img: '🖥️' },
+    { key: 'bluetooth', name: t('ecommerce.products.bluetooth'), price: 3500, icon: faHeadphones },
+    { key: 'smartwatch', name: t('ecommerce.products.smartwatch'), price: 8900, icon: faClock },
+    { key: 'keyboard', name: t('ecommerce.products.keyboard'), price: 12500, icon: faKeyboard },
+    { key: 'monitor', name: t('ecommerce.products.monitor'), price: 45000, icon: faDesktop },
   ]
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
@@ -86,9 +88,9 @@ export default function EcommerceExperience() {
           >
             <h3 className="text-sm font-bold uppercase tracking-wider text-base-content/70 mb-4">{t('ecommerce.tierLabel')}</h3>
             <div className="space-y-2">
-              {tiers.map((t, i) => (
+              {tiers.map((tierItem, i) => (
                 <button
-                  key={t.name}
+                  key={tierItem.name}
                   onClick={() => {
                     setSelectedTier(i)
                     setPurchased(false)
@@ -99,11 +101,11 @@ export default function EcommerceExperience() {
                     }`}
                 >
                   <span className="flex items-center gap-2">
-                    <span className="text-lg">{t.emoji}</span>
-                    <span className="font-bold">{t.name}</span>
+                    <FontAwesomeIcon icon={tierItem.icon} style={{ color: tierItem.color }} className="text-base w-4" />
+                    <span className="font-bold">{tierItem.name}</span>
                   </span>
-                  <span className="font-mono text-xs" style={{ color: t.color }}>
-                    {t.multiplier}x
+                  <span className="font-mono text-xs" style={{ color: tierItem.color }}>
+                    {tierItem.multiplier}x
                   </span>
                 </button>
               ))}
@@ -138,7 +140,7 @@ export default function EcommerceExperience() {
                       : 'border-base-300 bg-base-200 hover:border-base-content/50'
                     }`}
                 >
-                  <div className="text-3xl mb-2">{p.img}</div>
+                  <div className="text-3xl mb-2 text-primary/50"><FontAwesomeIcon icon={p.icon} /></div>
                   <div className="text-xs font-bold leading-tight">{p.name}</div>
                   <div className="text-sm font-mono text-primary mt-1">
                     ${(p.price / 100).toFixed(2)}
@@ -180,7 +182,7 @@ export default function EcommerceExperience() {
               ) : !purchased ? (
                 <motion.div key="preview" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
                   <div className="text-center p-4 bg-base-200 rounded-xl">
-                    <div className="text-4xl mb-2">{cart.img}</div>
+                    <div className="text-4xl mb-2 text-primary/50"><FontAwesomeIcon icon={cart.icon} /></div>
                     <div className="font-bold">{cart.name}</div>
                     <div className="text-lg font-mono text-primary">${(cart.price / 100).toFixed(2)}</div>
                   </div>
@@ -189,8 +191,9 @@ export default function EcommerceExperience() {
                     <div className="text-2xl font-bold font-mono text-error">
                       {tokensBurned.toLocaleString()} NX036
                     </div>
-                    <div className="text-xs text-base-content/70 mt-1">
-                      {t('ecommerce.tierInfo', { emoji: tier.emoji, name: tier.name, multiplier: tier.multiplier })}
+                    <div className="text-xs text-base-content/70 mt-1 flex items-center gap-1.5">
+                      <FontAwesomeIcon icon={tier.icon} style={{ color: tier.color }} className="text-xs" />
+                      {t('ecommerce.tierInfo', { name: tier.name, multiplier: tier.multiplier })}
                     </div>
                   </div>
                   <div className="text-xs text-base-content/70 text-center">
@@ -201,11 +204,11 @@ export default function EcommerceExperience() {
                 <motion.div key={simKey} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
                   {/* Animated steps */}
                   {[
-                    { label: t('ecommerce.resultSteps.registered'), icon: '✅', delay: 0 },
-                    { label: t('ecommerce.resultSteps.burned', { count: tokensBurned.toLocaleString() }), icon: '🔥', delay: 0.3 },
-                    { label: t('ecommerce.resultSteps.supplyReduced'), icon: '📉', delay: 0.6 },
-                    { label: t('ecommerce.resultSteps.loyaltyAdded', { count: loyaltyPoints.toLocaleString() }), icon: '⭐', delay: 0.9 },
-                  ].map(({ label, icon, delay }) => (
+                    { label: t('ecommerce.resultSteps.registered'), icon: faCircleCheck, iconClass: 'text-success', delay: 0 },
+                    { label: t('ecommerce.resultSteps.burned', { count: tokensBurned.toLocaleString() }), icon: faFire, iconClass: 'text-error', delay: 0.3 },
+                    { label: t('ecommerce.resultSteps.supplyReduced'), icon: faArrowTrendDown, iconClass: 'text-warning', delay: 0.6 },
+                    { label: t('ecommerce.resultSteps.loyaltyAdded', { count: loyaltyPoints.toLocaleString() }), icon: faStar, iconClass: 'text-accent', delay: 0.9 },
+                  ].map(({ label, icon, iconClass, delay }) => (
                     <motion.div
                       key={label}
                       initial={{ opacity: 0, x: 20 }}
@@ -213,7 +216,7 @@ export default function EcommerceExperience() {
                       transition={{ delay }}
                       className="flex items-center gap-3 p-3 bg-base-200 rounded-xl text-sm"
                     >
-                      <span className="text-lg">{icon}</span>
+                      <FontAwesomeIcon icon={icon} className={`text-base shrink-0 ${iconClass}`} />
                       <span>{label}</span>
                     </motion.div>
                   ))}

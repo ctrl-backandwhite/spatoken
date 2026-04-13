@@ -2,6 +2,8 @@ import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import CountUp from 'react-countup'
 import { useTranslation } from 'react-i18next'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightLeft, faHammer, faBullhorn, faFire, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 export default function DexDemo() {
   const ref = useRef(null)
@@ -35,17 +37,17 @@ export default function DexDemo() {
   const steps =
     mode === 'buy'
       ? [
-        { label: t('dex.steps.buyPancake'), amount, color: 'text-base-content', icon: '💱' },
-        { label: t('dex.steps.devFee'), amount: devFee, color: 'text-warning', icon: '🏗️' },
-        { label: t('dex.steps.promoFee'), amount: promoFee, color: 'text-warning', icon: '📢' },
-        { label: t('dex.steps.dexBurn'), amount: dexBurn, color: 'text-error', icon: '🔥' },
-        { label: t('dex.steps.receiveWallet'), amount: userReceives, color: 'text-success', icon: '✅' },
+        { label: t('dex.steps.buyPancake'), amount, color: 'text-base-content', icon: faRightLeft },
+        { label: t('dex.steps.devFee'), amount: devFee, color: 'text-warning', icon: faHammer },
+        { label: t('dex.steps.promoFee'), amount: promoFee, color: 'text-warning', icon: faBullhorn },
+        { label: t('dex.steps.dexBurn'), amount: dexBurn, color: 'text-error', icon: faFire },
+        { label: t('dex.steps.receiveWallet'), amount: userReceives, color: 'text-success', icon: faCircleCheck },
       ]
       : [
-        { label: t('dex.steps.sellPancake'), amount, color: 'text-base-content', icon: '💱' },
-        { label: t('dex.steps.devFee'), amount: devFee, color: 'text-warning', icon: '🏗️' },
-        { label: t('dex.steps.dexBurn'), amount: dexBurn, color: 'text-error', icon: '🔥' },
-        { label: t('dex.steps.buyerReceives'), amount: userReceives, color: 'text-success', icon: '✅' },
+        { label: t('dex.steps.sellPancake'), amount, color: 'text-base-content', icon: faRightLeft },
+        { label: t('dex.steps.devFee'), amount: devFee, color: 'text-warning', icon: faHammer },
+        { label: t('dex.steps.dexBurn'), amount: dexBurn, color: 'text-error', icon: faFire },
+        { label: t('dex.steps.buyerReceives'), amount: userReceives, color: 'text-success', icon: faCircleCheck },
       ]
 
   return (
@@ -164,7 +166,7 @@ export default function DexDemo() {
                     className="flex items-center justify-between bg-base-200 border border-base-300 rounded-xl px-4 py-3"
                   >
                     <span className="text-sm flex items-center gap-2">
-                      <span>{icon}</span> {label}
+                      <FontAwesomeIcon icon={icon} className={`w-4 shrink-0 ${color}`} /> {label}
                     </span>
                     <span className={`font-mono font-bold ${color}`}>
                       <CountUp end={amt} decimals={2} duration={1} separator="," key={simKey + label} />

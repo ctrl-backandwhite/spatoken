@@ -8,12 +8,12 @@
   --color-bg: oklch(0.985 0.005 270);
   --color-bg-card: oklch(0.97 0.008 270);
   --color-bg-dark: oklch(0.15 0.01 250);
-  --color-primary: oklch(0.68 0.12 265);
-  --color-primary-light: oklch(0.78 0.08 265);
+  --color-primary: oklch(0.72 0.10 265);
+  --color-primary-light: oklch(0.80 0.07 265);
   --color-primary-content: oklch(0.98 0.005 265);
-  --color-secondary: oklch(0.72 0.10 290);
+  --color-secondary: oklch(0.76 0.09 290);
   --color-secondary-content: oklch(0.98 0.005 290);
-  --color-accent: oklch(0.76 0.10 170);
+  --color-accent: oklch(0.80 0.09 170);
   --color-accent-content: oklch(0.20 0.04 170);
   --color-neutral: oklch(0.30 0.02 265);
   --color-neutral-content: oklch(0.92 0.005 265);
@@ -162,4 +162,80 @@ section {
 }
 .corporate-card:hover {
   @apply shadow-md border-primary/20;
+}
+
+/* ===== Minimalist pastel UI overrides ===== */
+
+/* Softer button border-radius */
+.btn {
+  border-radius: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.btn-lg {
+  border-radius: 0.875rem;
+}
+
+/* Primary button — clean pastel with subtle glow */
+.btn-primary {
+  border-color: transparent;
+  box-shadow: 0 2px 10px oklch(0.72 0.10 265 / 0.18);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 18px oklch(0.72 0.10 265 / 0.28);
+}
+
+/* Outline button — very soft border */
+.btn-outline {
+  border-color: oklch(0.88 0.006 270);
+}
+
+.btn-outline:hover {
+  border-color: oklch(0.72 0.10 265);
+  background: oklch(0.72 0.10 265 / 0.06);
+}
+
+/* Badge — pill style, softer primary variant */
+.badge-outline.badge-primary {
+  border-color: oklch(0.80 0.07 265);
+  color: oklch(0.55 0.10 265);
+  background: oklch(0.96 0.02 265);
+}
+
+/* Cards — minimal shadow */
+.card {
+  box-shadow: 0 1px 4px oklch(0.20 0.01 270 / 0.05);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 14px oklch(0.20 0.01 270 / 0.09);
+}
+
+/* Timeline connectors — thinner */
+.timeline-vertical .timeline-middle {
+  padding-inline: 0.75rem;
+}
+
+/* Headings — tighter tracking */
+h1, h2, h3 {
+  letter-spacing: -0.015em;
+}
+
+/* Gradient text — update to match new primary */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+}
+
+/* Link hover — pastel primary */
+.link:hover {
+  color: oklch(0.72 0.10 265);
+}
+
+/* Navbar — ensure crisp glass */
+.navbar {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
