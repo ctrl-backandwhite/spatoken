@@ -98,7 +98,7 @@ function PlatformRow({ platform, index, isInView, activeIndex, highlight }) {
     >
       {highlight && (
         <motion.div
-          className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 rounded-full"
+          className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 sm:px-3 py-0.5 rounded-full whitespace-nowrap max-w-[90%] text-center truncate"
           animate={{ scale: [1, 1.05, 1] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
