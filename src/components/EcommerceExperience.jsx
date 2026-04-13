@@ -3,11 +3,11 @@ import { motion, useInView, AnimatePresence, useScroll, useTransform } from 'fra
 import CountUp from 'react-countup'
 
 const tiers = [
-  { name: 'Basic', multiplier: 1, color: '#8888a0', emoji: '🥉' },
-  { name: 'Silver', multiplier: 2, color: '#c0c0c0', emoji: '🥈' },
-  { name: 'Gold', multiplier: 3, color: '#ffd700', emoji: '🥇' },
-  { name: 'Platinum', multiplier: 4, color: '#e5e4e2', emoji: '💎' },
-  { name: 'Diamond', multiplier: 5, color: '#b9f2ff', emoji: '👑' },
+  { name: 'Basic', multiplier: 1, color: '#b8b8d0', emoji: '🥉' },
+  { name: 'Silver', multiplier: 2, color: '#d4d4e0', emoji: '🥈' },
+  { name: 'Gold', multiplier: 3, color: '#fde68a', emoji: '🥇' },
+  { name: 'Platinum', multiplier: 4, color: '#e8e7f0', emoji: '💎' },
+  { name: 'Diamond', multiplier: 5, color: '#bae6fd', emoji: '👑' },
 ]
 
 const products = [
@@ -48,13 +48,13 @@ export default function EcommerceExperience() {
   const loyaltyPoints = tokensBurned
 
   return (
-    <section className="py-28 bg-base-200 relative overflow-hidden">
+    <section className="py-28 relative overflow-hidden">
       {/* Parallax decorative orb */}
       <motion.div
         style={{ y: decorY }}
         className="absolute -right-16 top-20 w-72 h-72 rounded-full pointer-events-none"
       >
-        <div className="w-full h-full rounded-full" style={{ background: 'radial-gradient(circle, oklch(0.52 0.12 175 / 0.025), transparent 70%)', filter: 'blur(80px)' }} />
+        <div className="w-full h-full rounded-full" style={{ background: 'radial-gradient(circle, oklch(0.76 0.10 170 / 0.04), transparent 70%)', filter: 'blur(80px)' }} />
       </motion.div>
 
       <div className="max-w-6xl mx-auto px-6" ref={ref}>
@@ -65,7 +65,7 @@ export default function EcommerceExperience() {
           style={{ y: headerY }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center text-xs font-semibold text-primary bg-primary/5 border border-primary/15 rounded-full px-3 py-1 uppercase tracking-[0.15em] mb-4">Capítulo 4</span>
+          <span className="badge badge-primary badge-outline badge-sm uppercase tracking-[0.15em] mb-4">Capítulo 4</span>
           <h2 className="text-4xl font-bold tracking-tight mb-4">
             Compra en <span className="gradient-text">NX036 E-Commerce</span>
           </h2>
@@ -256,15 +256,15 @@ export default function EcommerceExperience() {
             </div>
             <div className="flex gap-2">
               <span className="text-primary font-bold">2.</span>
-              <span>El backend registra tu compra en el contrato inteligente con el monto en USD.</span>
+              <span>El backend registra su compra en el contrato inteligente con el monto en USD.</span>
             </div>
             <div className="flex gap-2">
               <span className="text-primary font-bold">3.</span>
-              <span>El contrato calcula tus tokens según tu nivel y los quema inmediatamente del pool.</span>
+              <span>El contrato calcula sus tokens según su nivel y los quema inmediatamente del pool.</span>
             </div>
             <div className="flex gap-2">
               <span className="text-primary font-bold">4.</span>
-              <span>Recibes puntos de lealtad equivalentes. El supply total de NX036 se redujo.</span>
+              <span>Recibe puntos de lealtad equivalentes. El supply total de NX036 se redujo.</span>
             </div>
           </div>
         </motion.div>
@@ -272,4 +272,3 @@ export default function EcommerceExperience() {
     </section>
   )
 }
-

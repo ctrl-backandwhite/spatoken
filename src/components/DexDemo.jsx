@@ -47,7 +47,7 @@ export default function DexDemo() {
         ]
 
   return (
-    <section className="py-28 bg-base-200 relative overflow-hidden">
+    <section className="py-28 bg-base-100 relative overflow-hidden">
       {/* Parallax decorative orb */}
       <motion.div
         style={{ y: decorY }}

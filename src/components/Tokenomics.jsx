@@ -22,7 +22,7 @@ function Bar({ category, pct, color }) {
 
 export default function Tokenomics() {
   return (
-    <section id="tokenomics" className="bg-base-200 py-24">
+    <section id="tokenomics" className="bg-base-100 py-24">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="fade-in text-4xl mb-3 text-center">
           <span className="gradient-text">Tokenomics</span>

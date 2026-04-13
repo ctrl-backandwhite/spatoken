@@ -36,7 +36,7 @@ export default function BurnCapJourney() {
   }
 
   return (
-    <section className="py-28 bg-base-200 relative overflow-hidden">
+    <section className="py-28 bg-base-100 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-6" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 60 }}
