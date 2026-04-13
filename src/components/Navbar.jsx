@@ -1,0 +1,61 @@
+import { useEffect, useRef, useState } from 'react'
+import gsap from 'gsap'
+
+export default function Navbar() {
+  const navRef = useRef(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    gsap.fromTo(navRef.current, { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.2 })
+
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <nav
+      ref={navRef}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'py-3 bg-base-100/95 backdrop-blur-xl shadow-sm border-b border-base-300'
+          : 'py-5'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
+        <a href="#hero" className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+            <span className="text-white text-xs font-bold">NX</span>
+          </div>
+          <span className="text-lg font-bold tracking-tight text-base-content">NX036</span>
+        </a>
+
+        <div className="flex items-center gap-1">
+          {[
+            { label: 'Quema', href: '#burn' },
+            { label: 'DEX', href: '#dex' },
+            { label: 'E-Commerce', href: '#ecommerce' },
+            { label: 'Staking', href: '#staking' },
+            { label: 'Vesting', href: '#vesting' },
+            { label: 'Roadmap', href: '#roadmap' },
+          ].map(({ label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="text-sm text-base-content/70 hover:text-primary px-3 py-2 rounded-lg hover:bg-primary/10 transition-all hidden md:block"
+            >
+              {label}
+            </a>
+          ))}
+          <div className="w-px h-5 bg-base-300 mx-3 hidden md:block" />
+          <a
+            href="#cta"
+            className="btn btn-primary btn-sm text-sm font-semibold rounded-lg"
+          >
+            Comprar Token
+          </a>
+        </div>
+      </div>
+    </nav>
+  )
+}

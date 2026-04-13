@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: corporate --default;
+}
+
+@theme {
+  /* Pastel palette */
+  --color-bg: oklch(0.985 0.005 270);
+  --color-bg-card: oklch(0.97 0.008 270);
+  --color-bg-dark: oklch(0.15 0.01 250);
+  --color-primary: oklch(0.68 0.12 265);
+  --color-primary-light: oklch(0.78 0.08 265);
+  --color-primary-content: oklch(0.98 0.005 265);
+  --color-secondary: oklch(0.72 0.10 290);
+  --color-secondary-content: oklch(0.98 0.005 290);
+  --color-accent: oklch(0.76 0.10 170);
+  --color-accent-content: oklch(0.20 0.04 170);
+  --color-neutral: oklch(0.30 0.02 265);
+  --color-neutral-content: oklch(0.92 0.005 265);
+  --color-base-100: oklch(0.985 0.005 270);
+  --color-base-200: oklch(0.96 0.008 270);
+  --color-base-300: oklch(0.90 0.01 270);
+  --color-base-content: oklch(0.22 0.01 270);
+  --color-error: oklch(0.72 0.12 15);
+  --color-error-content: oklch(0.98 0.005 15);
+  --color-success: oklch(0.74 0.12 155);
+  --color-success-content: oklch(0.98 0.005 155);
+  --color-warning: oklch(0.80 0.12 85);
+  --color-warning-content: oklch(0.22 0.05 85);
+  --color-info: oklch(0.76 0.08 240);
+  --color-info-content: oklch(0.98 0.005 240);
+  --color-text: oklch(0.22 0.01 270);
+  --color-text-muted: oklch(0.52 0.01 270);
+  --color-border: oklch(0.90 0.01 270);
+  --color-surface: oklch(0.975 0.005 270);
+  --font-main: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+body {
+  @apply bg-bg text-text font-[family-name:var(--font-main)] leading-relaxed overflow-x-hidden antialiased;
+  font-weight: 300;
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+}
+
+.glow {
+  text-shadow: 0 0 60px oklch(0.68 0.12 265 / 0.2);
+}
+
+/* Corporate section divider */
+.section-divider {
+  @apply w-16 h-0.5 bg-gradient-to-r from-primary to-accent mx-auto;
+}
+
+/* Custom range slider */
+input[type='range']::-webkit-slider-thumb {
+  @apply w-5 h-5 rounded-full bg-white border-2 border-primary cursor-pointer appearance-none shadow-md;
+  margin-top: -6px;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  @apply h-2 bg-border rounded-full;
+}
+
+/* Section scroll snap hint */
+section {
+  scroll-margin-top: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Corporate card hover */
+.corporate-card {
+  @apply bg-base-100 border border-base-300 rounded-2xl shadow-sm;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.corporate-card:hover {
+  @apply shadow-md border-primary/20;
+}
