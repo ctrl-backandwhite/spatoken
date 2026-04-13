@@ -67,7 +67,7 @@ export default function HeroStory() {
           </span>
         </div>
 
-        <h1 ref={titleRef} className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight mb-6 leading-[1.15]">
+        <h1 ref={titleRef} className="text-[clamp(1.6rem,3.8vw,2.8rem)] font-bold tracking-tight mb-6 leading-[1.15]">
           <span className="text-base-content">{t('hero.title1')}</span>
           <br />
           <span className="gradient-text">{t('hero.title2')}</span>
